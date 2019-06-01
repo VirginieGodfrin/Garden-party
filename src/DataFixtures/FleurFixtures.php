@@ -42,6 +42,7 @@ class FleurFixtures extends BaseFixture
 			$fleur->setDescription($this->faker->randomElement(self::$description));
 			$fleur->setBouquet($this->faker->randomElement(self::$bouquet));
 			$fleur->setCouleur($this->faker->colorName());
+			$fleur->setCreatedAt($this->faker->dateTimeThisMonth());
     	});
     	
         $manager->flush();

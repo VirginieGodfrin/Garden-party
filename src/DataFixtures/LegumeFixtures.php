@@ -50,6 +50,7 @@ class LegumeFixtures extends BaseFixture
 			$legume->setDescription($this->faker->randomElement(self::$description));
 			$legume->setTaille($this->faker->randomElement(self::$taille));
 			$legume->setSoupe($this->faker->randomElement(self::$soupe));
+			$legume->setCreatedAt($this->faker->dateTimeThisMonth());
     	});
     	
         $manager->flush();

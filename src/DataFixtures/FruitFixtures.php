@@ -62,6 +62,7 @@ class FruitFixtures extends BaseFixture
 			$fruit->setDescription($this->faker->randomElement(self::$description));
 			$fruit->setArbre($this->faker->randomElement(self::$arbre));
 			$fruit->setSalade($this->faker->randomElement(self::$salade));
+			$fruit->setCreatedAt($this->faker->dateTimeThisMonth());
     	});
     	
         $manager->flush();
