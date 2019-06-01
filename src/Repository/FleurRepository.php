@@ -19,6 +19,22 @@ class FleurRepository extends ServiceEntityRepository
         parent::__construct($registry, Fleur::class);
     }
 
+    /**
+     * @return Fleur[] Returns an array of Fleur objects
+     */
+    
+    // public function giveMeAllFlowersField()
+    // {
+    //     return $this->createQueryBuilder('f')
+    //         ->leftJoin('a.vegetal', 'v')
+    //         ->addSelect('v')
+    //         ->orderBy('v.id', 'ASC')
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+    
+
     // /**
     //  * @return Fleur[] Returns an array of Fleur objects
     //  */

@@ -28,7 +28,7 @@ class Legume extends Vegetal
 
     public function getId(): ?int
     {
-        return $this->id;
+        return parent::getId();
     }
 
     public function getTaille(): ?string

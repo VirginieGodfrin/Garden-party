@@ -28,7 +28,7 @@ class Fleur extends Vegetal
 
     public function getId(): ?int
     {
-        return $this->id;
+        return parent::getId();
     }
 
     public function getBouquet(): ?string
