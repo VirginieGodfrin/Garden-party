@@ -15,7 +15,7 @@
 	        <h2>Fleurs</h2>
 	        <ul>
 	        {% for fleur in fleurs %}
-	        	<li><a class="" href="#" role="button">{{ fleur.id }} {{ fleur.nom }}</a></li>
+	        	<li><a class="" href="#" role="button">{{ fleur.id }} {{ fleur.nom }} {{ fleur.slug }}</a></li>
 	        {% endfor %}
 	    	</ul>
 	      </div>
@@ -23,7 +23,7 @@
 	        <h2>Fruits</h2>
 	        <ul>
 	        {% for fruit in fruits %}
-	        	<li><a class="" href="#" role="button">{{ fruit.id }} {{ fruit.nom }}</a></li>
+	        	<li><a class="" href="#" role="button">{{ fruit.id }} {{ fruit.nom }} {{ fruit.slug }}</a></li>
 	        {% endfor %}
 	    	</ul>
 	      </div>
@@ -31,7 +31,7 @@
 	        <h2>Légumes</h2>
 	        <ul>
 	        {% for legume in legumes %}
-	        	<li><a class="" href="#" role="button">{{ legume.id}} {{ legume.nom }}</a></li>
+	        	<li><a class="" href="#" role="button">{{ legume.id}} {{ legume.nom }} {{ legume.slug }}</a></li>
 	        {% endfor %}
 	    	</ul>
 	      </div>

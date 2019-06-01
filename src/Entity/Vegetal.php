@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -14,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     "fruit" = "Fruit",
  *     "legume" = "Legume"
  * })
+ * 
  */
 class Vegetal
 {
@@ -33,6 +35,12 @@ class Vegetal
      * @ORM\Column(type="text")
      */
     private $description;
+
+    /**
+     * @Gedmo\Slug(fields={"nom"})
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -61,5 +69,10 @@ class Vegetal
         $this->description = $description;
 
         return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
