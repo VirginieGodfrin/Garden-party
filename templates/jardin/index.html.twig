@@ -9,4 +9,34 @@
 		</div>
 	</div>
 
+	<div class="container">
+	    <div class="row">
+	      <div class="col-md-4">
+	        <h2>Fleurs</h2>
+	        <ul>
+	        {% for fleur in fleurs %}
+	        	<li><a class="" href="#" role="button">{{ fleur.nom }}</a></li>
+	        {% endfor %}
+	    	</ul>
+	      </div>
+	      <div class="col-md-4">
+	        <h2>Fruits</h2>
+	        <ul>
+	        {% for fruit in fruits %}
+	        	<li><a class="" href="#" role="button">{{ fruit.nom }}</a></li>
+	        {% endfor %}
+	    	</ul>
+	      </div>
+	      <div class="col-md-4">
+	        <h2>Légumes</h2>
+	        <ul>
+	        {% for legume in legumes %}
+	        	<li><a class="" href="#" role="button">{{ legume.nom }}</a></li>
+	        {% endfor %}
+	    	</ul>
+	      </div>
+	</div>
+
+    <hr>
+
 {% endblock %}
