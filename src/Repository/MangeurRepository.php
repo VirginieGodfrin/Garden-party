@@ -19,6 +19,21 @@ class MangeurRepository extends ServiceEntityRepository
         parent::__construct($registry, Mangeur::class);
     }
 
+    /**
+     * @return Mangeur[] Returns an array of Mangeur objects
+     */
+    
+    public function giveMeAllMangeurs()
+    {
+        return $this->createQueryBuilder('m')
+            ->innerJoin('m.fruits', 'f')
+            ->addSelect('f')
+            ->orderBy('m.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
     // /**
     //  * @return Mangeur[] Returns an array of Mangeur objects
     //  */

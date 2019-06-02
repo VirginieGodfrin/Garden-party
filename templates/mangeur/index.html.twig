@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les mangeurs{% endblock %}
+
+{% block body %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-3">Les mangeurs !</h1>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			{% for mangeur in mangeurs %}
+				{{ dump(mangeur)}}
+			<div class="col-md-4">
+				<h3>{{ mangeur.nom }}</h3>
+				<ul>
+					<li>{{ mangeur.email }}</li>
+					<li>{{ mangeur.adresse }}</li>
+				</ul>
+				<p>
+					fruits:
+					<ul>
+						<li>{{ mangeur.fruits.nom }}</li>
+					</ul>
+				</p>
+				
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+    <hr>
+
+{% endblock %}
