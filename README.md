@@ -4,7 +4,9 @@ README.md
 Garden party est un projet dont le but est d'expérimenter l'héritage de classe avec doctrine ORM.
 
 ## Les différents types d'héritage :
-1. ### "Mapped Superclasses" - [la Super Classe.](https://github.com/VirginieGodfrin/Garden-party/blob/master/src/Model/MappedSuperclassBase.php) !
+1. ### "Mapped Superclasses" - [la Super Classe.](https://github.com/VirginieGodfrin/Garden-party/blob/master/src/Model/MappedSuperclassBase.php)
+
+Sans véritable intéret !
 
 [doc](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/inheritance-mapping.html#mapped-superclasses)
 
