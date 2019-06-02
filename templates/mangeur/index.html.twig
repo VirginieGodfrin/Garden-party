@@ -12,20 +12,21 @@
 	<div class="container">
 		<div class="row">
 			{% for mangeur in mangeurs %}
-				{{ dump(mangeur)}}
 			<div class="col-md-4">
 				<h3>{{ mangeur.nom }}</h3>
-				<ul>
-					<li>{{ mangeur.email }}</li>
-					<li>{{ mangeur.adresse }}</li>
-				</ul>
 				<p>
-					fruits:
 					<ul>
-						<li>{{ mangeur.fruits.nom }}</li>
+						<li>{{ mangeur.email }}</li>
+						<li>{{ mangeur.adresse }}</li>
 					</ul>
 				</p>
-				
+				<p>
+					<ul>fruits:
+						{% for fruit in mangeur.fruits %}
+							{{ fruit.nom }}
+						{% endfor %}
+					</ul>
+				</p>
 			</div>
 			{% endfor %}
 		</div>

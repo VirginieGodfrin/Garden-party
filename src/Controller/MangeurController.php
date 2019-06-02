@@ -17,14 +17,7 @@ class MangeurController extends AbstractController
     public function indexAction(MangeurRepository $mangeurRepo)
     {
     	$mangeurs = $mangeurRepo->giveMeAllMangeurs();
-    	// dump($mangeurs);
-    	// foreach ($mangeurs as $mangeur) {
-    	// 	$fruits = $mangeur->getFruits();
-    	// 	dump($fruits);
-    	// }
-    	
-    	
-
+    	dump($mangeurs);
         return $this->render('mangeur/index.html.twig', [
             'mangeurs' => $mangeurs ,
         ]);

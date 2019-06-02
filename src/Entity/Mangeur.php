@@ -30,13 +30,13 @@ class Mangeur extends User
     private $email;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Fruit", inversedBy="mangeurs")
+     * @ORM\OneToMany(targetEntity="App\Entity\Fruit", mappedBy="mangeur")
      */
     private $fruits;
 
     public function __construct()
     {
-        $this->fleurs = new ArrayCollection();
+        $this->fruits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,14 +68,33 @@ class Mangeur extends User
         return $this;
     }
 
-    public function getFruits(): ?Fruit
+    /**
+     * @return Collection|Fruit[]
+     */
+    public function getFruits(): Collection
     {
         return $this->fruits;
     }
 
-    public function setFruits(?Fruit $fruits): self
+    public function addFruit(Fruit $fruit): self
     {
-        $this->fruits = $fruits;
+        if (!$this->fruits->contains($fruit)) {
+            $this->fruits[] = $fruit;
+            $fruit->setMangeur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFruit(Fruit $fruit): self
+    {
+        if ($this->fruits->contains($fruit)) {
+            $this->fruits->removeElement($fruit);
+            // set the owning side to null (unless already changed)
+            if ($fruit->getMangeur() === $this) {
+                $fruit->setMangeur(null);
+            }
+        }
 
         return $this;
     }

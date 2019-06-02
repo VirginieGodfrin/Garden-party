@@ -30,14 +30,10 @@ class Fruit extends Vegetal
     private $salade;
 
     /**
-     * @ORM\OneToMany(targetEntity="Mangeur", mappedBy="fruits")
+     * @ORM\ManyToOne(targetEntity="Mangeur", inversedBy="fruits")
      */
-    private $mangeurs;
+    private $mangeur;
 
-    public function __construct()
-    {
-        $this->mangeurs = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -68,33 +64,14 @@ class Fruit extends Vegetal
         return $this;
     }
 
-    /**
-     * @return Collection|Mangeur[]
-     */
-    public function getMangeurs(): Collection
+    public function getMangeur(): ?Mangeur
     {
-        return $this->mangeurs;
+        return $this->mangeur;
     }
 
-    public function addMangeur(Mangeur $mangeur): self
+    public function setMangeur(?Mangeur $mangeur): self
     {
-        if (!$this->mangeurs->contains($mangeur)) {
-            $this->mangeurs[] = $mangeur;
-            $mangeur->setFruits($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMangeur(Mangeur $mangeur): self
-    {
-        if ($this->mangeurs->contains($mangeur)) {
-            $this->mangeurs->removeElement($mangeur);
-            // set the owning side to null (unless already changed)
-            if ($mangeur->getFruits() === $this) {
-                $mangeur->setFruits(null);
-            }
-        }
+        $this->mangeur = $mangeur;
 
         return $this;
     }

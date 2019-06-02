@@ -4,11 +4,9 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Mangeur;
-use App\Entity\Fruit;
 
-class MangeurFixtures extends BaseFixture implements DependentFixtureInterface
+class MangeurFixtures extends BaseFixture
 {
 	public function loadData(ObjectManager $manager)
     {
@@ -19,18 +17,8 @@ class MangeurFixtures extends BaseFixture implements DependentFixtureInterface
 			$mangeur->setDescription($this->faker->text(200));
 			$mangeur->setAdresse($this->faker->address());
 			$mangeur->setEmail($this->faker->email());
-
-			$fruits = $this->getRandomReferences(Fruit::class, $this->faker->numberBetween(0, 5));
-            foreach ($fruits as $fruit) {
-                $mangeur->setFruits($fruit);
-            }
     	});
     	
         $manager->flush();
-    }
-
-    public function getDependencies()
-    {
-        return [ FruitFixtures::class ];
     }
 }
