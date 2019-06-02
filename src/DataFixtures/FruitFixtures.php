@@ -65,7 +65,7 @@ class FruitFixtures extends BaseFixture implements DependentFixtureInterface
 			$fruit->setArbre($this->faker->randomElement(self::$arbre));
 			$fruit->setSalade($this->faker->randomElement(self::$salade));
 			$fruit->setCreatedAt($this->faker->dateTimeThisMonth());
-			$fruit->setMangeur($this->getRandomReference(Mangeur::class));
+			$fruit->setMangeurs($this->getRandomReference(Mangeur::class));
     	});
     	
         $manager->flush();

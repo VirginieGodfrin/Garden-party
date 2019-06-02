@@ -3,9 +3,11 @@
 namespace App\DataFixtures;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Fleur;
+use App\Entity\Mangeur;
 
-class FleurFixtures extends BaseFixture
+class FleurFixtures extends BaseFixture implements DependentFixtureInterface
 {
     private static $name = [
 			'Paquerette',
@@ -43,8 +45,14 @@ class FleurFixtures extends BaseFixture
 			$fleur->setBouquet($this->faker->randomElement(self::$bouquet));
 			$fleur->setCouleur($this->faker->colorName());
 			$fleur->setCreatedAt($this->faker->dateTimeThisMonth());
+			$fleur->setMangeurs($this->getRandomReference(Mangeur::class));
     	});
     	
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [ MangeurFixtures::class ];
     }
 }

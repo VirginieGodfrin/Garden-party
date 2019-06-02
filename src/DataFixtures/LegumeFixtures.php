@@ -3,9 +3,11 @@
 namespace App\DataFixtures;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Legume;
+use App\Entity\Mangeur;
 
-class LegumeFixtures extends BaseFixture
+class LegumeFixtures extends BaseFixture implements DependentFixtureInterface
 {
     private static $name = [
 			'Courgette',
@@ -51,8 +53,14 @@ class LegumeFixtures extends BaseFixture
 			$legume->setTaille($this->faker->randomElement(self::$taille));
 			$legume->setSoupe($this->faker->randomElement(self::$soupe));
 			$legume->setCreatedAt($this->faker->dateTimeThisMonth());
+			$legume->setMangeurs($this->getRandomReference(Mangeur::class));
     	});
     	
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [ MangeurFixtures::class ];
     }
 }
