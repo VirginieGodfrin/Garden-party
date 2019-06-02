@@ -25,8 +25,6 @@ class FruitRepository extends ServiceEntityRepository
     public function giveMeAllFruit()
     {
         return $this->createQueryBuilder('f')
-            ->innerJoin('f.mangeur', 'm')
-            ->addSelect('m')
             ->orderBy('f.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()

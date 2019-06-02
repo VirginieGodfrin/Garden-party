@@ -55,4 +55,9 @@ class Fleur extends Vegetal
 
         return $this;
     }
+
+    public function getMangeurs(): ?Mangeur
+    {
+        return parent::getMangeurs();
+    }
 }

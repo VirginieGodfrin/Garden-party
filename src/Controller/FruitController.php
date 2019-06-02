@@ -16,7 +16,7 @@ class FruitController extends AbstractController
      */
     public function indexAction(FruitRepository $fruitrepo)
     {
-    	$fruits = $fruitrepo->giveMeAllFruit();
+    	$fruits = $fruitrepo->findAll();
 
         return $this->render('fruit/index.html.twig', [
         	'fruits' => $fruits
