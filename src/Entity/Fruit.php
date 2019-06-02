@@ -29,12 +29,6 @@ class Fruit extends Vegetal
      */
     private $salade;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Mangeur", inversedBy="fruits")
-     */
-    private $mangeur;
-
-
     public function getId(): ?int
     {
         return parent::getId();
@@ -60,18 +54,6 @@ class Fruit extends Vegetal
     public function setSalade(?string $salade): self
     {
         $this->salade = $salade;
-
-        return $this;
-    }
-
-    public function getMangeur(): ?Mangeur
-    {
-        return $this->mangeur;
-    }
-
-    public function setMangeur(?Mangeur $mangeur): self
-    {
-        $this->mangeur = $mangeur;
 
         return $this;
     }

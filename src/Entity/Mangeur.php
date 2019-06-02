@@ -30,13 +30,14 @@ class Mangeur extends User
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Fruit", mappedBy="mangeur")
+     * @ORM\OneToMany(targetEntity="App\Entity\Vegetal", mappedBy="mangeurs")
      */
-    private $fruits;
+    private $vegetals;
 
     public function __construct()
     {
         $this->fruits = new ArrayCollection();
+        $this->vegetals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -69,34 +70,33 @@ class Mangeur extends User
     }
 
     /**
-     * @return Collection|Fruit[]
+     * @return Collection|Vegetal[]
      */
-    public function getFruits(): Collection
+    public function getVegetals(): Collection
     {
-        return $this->fruits;
+        return $this->vegetals;
     }
 
-    public function addFruit(Fruit $fruit): self
+    public function addVegetal(Vegetal $vegetal): self
     {
-        if (!$this->fruits->contains($fruit)) {
-            $this->fruits[] = $fruit;
-            $fruit->setMangeur($this);
+        if (!$this->vegetals->contains($vegetal)) {
+            $this->vegetals[] = $vegetal;
+            $vegetal->setMangeurs($this);
         }
 
         return $this;
     }
 
-    public function removeFruit(Fruit $fruit): self
+    public function removeVegetal(Vegetal $vegetal): self
     {
-        if ($this->fruits->contains($fruit)) {
-            $this->fruits->removeElement($fruit);
+        if ($this->vegetals->contains($vegetal)) {
+            $this->vegetals->removeElement($vegetal);
             // set the owning side to null (unless already changed)
-            if ($fruit->getMangeur() === $this) {
-                $fruit->setMangeur(null);
+            if ($vegetal->getMangeurs() === $this) {
+                $vegetal->setMangeurs(null);
             }
         }
 
         return $this;
     }
-
 }

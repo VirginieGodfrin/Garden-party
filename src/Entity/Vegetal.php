@@ -44,6 +44,11 @@ class Vegetal
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Mangeur", inversedBy="vegetals")
+     */
+    private $mangeurs;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,5 +81,17 @@ class Vegetal
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    public function getMangeurs(): ?Mangeur
+    {
+        return $this->mangeurs;
+    }
+
+    public function setMangeurs(?Mangeur $mangeurs): self
+    {
+        $this->mangeurs = $mangeurs;
+
+        return $this;
     }
 }
