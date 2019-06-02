@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les fruits{% endblock %}
+
+{% block body %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-3">Les fruits !</h1>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			{% for fruit in fruits %}
+			<div class="col-md-4">
+				<h3>{{ fruit.nom }}</h3>
+				<p>{{ fruit.description }}</p>
+				<p>
+					<ul>
+						<li>{{ fruit.arbre }}</li>
+						<li>Salade de {{ fruit.salade }}</li>
+						<li>Mangeur: {{ fruit.mangeur.nom }}</li>
+					</ul>
+				</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+    <hr>
+
+{% endblock %}

@@ -19,6 +19,22 @@ class FruitRepository extends ServiceEntityRepository
         parent::__construct($registry, Fruit::class);
     }
 
+    /**
+     * @return Fruit[] Returns an array of Fruit objects
+     */
+    public function giveMeAllFruit()
+    {
+        return $this->createQueryBuilder('f')
+            ->innerJoin('f.mangeur', 'm')
+            ->addSelect('m')
+            ->orderBy('f.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+
     // /**
     //  * @return Fruit[] Returns an array of Fruit objects
     //  */
