@@ -60,4 +60,9 @@ class Fleur extends Vegetal
     {
         return parent::getMangeurs();
     }
+
+    public function getClassName()
+    {
+        return (new \ReflectionClass($this))->getShortName();
+    }
 }

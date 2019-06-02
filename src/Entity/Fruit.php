@@ -62,4 +62,9 @@ class Fruit extends Vegetal
     {
         return parent::getMangeur();
     }
+
+    public function getClassName()
+    {
+        return (new \ReflectionClass($this))->getShortName();
+    }
 }

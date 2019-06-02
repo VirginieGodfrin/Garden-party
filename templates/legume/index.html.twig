@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les legumes{% endblock %}
+
+{% block body %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-3">Les legumes !</h1>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			{% for legume in legumes %}
+			<div class="col-md-4">
+				<h3>{{ legume.nom }}</h3>
+				<p>{{ legume.description }}</p>
+				<p>
+					<ul>
+						<li>{{ legume.taille }}</li>
+						<li>Salade de {{ legume.soupe}}</li>
+						<li>Mangeur: {{ legume.mangeur.nom }}</li>
+					</ul>
+				</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+    <hr>
+{% endblock %}

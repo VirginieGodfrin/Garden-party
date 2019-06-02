@@ -54,4 +54,14 @@ class Legume extends Vegetal
 
         return $this;
     }
+
+    public function getMangeur(): ?Mangeur
+    {
+        return parent::getMangeur();
+    }
+
+    public function getClassName()
+    {
+        return (new \ReflectionClass($this))->getShortName();
+    }
 }

@@ -30,7 +30,7 @@ class Mangeur extends User
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Vegetal", mappedBy="mangeurs")
+     * @ORM\OneToMany(targetEntity="App\Entity\Vegetal", mappedBy="mangeur")
      */
     private $vegetals;
 
@@ -81,7 +81,7 @@ class Mangeur extends User
     {
         if (!$this->vegetals->contains($vegetal)) {
             $this->vegetals[] = $vegetal;
-            $vegetal->setMangeurs($this);
+            $vegetal->setMangeur($this);
         }
 
         return $this;
@@ -92,8 +92,8 @@ class Mangeur extends User
         if ($this->vegetals->contains($vegetal)) {
             $this->vegetals->removeElement($vegetal);
             // set the owning side to null (unless already changed)
-            if ($vegetal->getMangeurs() === $this) {
-                $vegetal->setMangeurs(null);
+            if ($vegetal->getMangeur() === $this) {
+                $vegetal->setMangeur(null);
             }
         }
 

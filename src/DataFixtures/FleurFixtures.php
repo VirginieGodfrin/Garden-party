@@ -45,7 +45,7 @@ class FleurFixtures extends BaseFixture implements DependentFixtureInterface
 			$fleur->setBouquet($this->faker->randomElement(self::$bouquet));
 			$fleur->setCouleur($this->faker->colorName());
 			$fleur->setCreatedAt($this->faker->dateTimeThisMonth());
-			$fleur->setMangeurs($this->getRandomReference(Mangeur::class));
+			$fleur->setMangeur($this->getRandomReference(Mangeur::class));
     	});
     	
         $manager->flush();

@@ -53,7 +53,7 @@ class LegumeFixtures extends BaseFixture implements DependentFixtureInterface
 			$legume->setTaille($this->faker->randomElement(self::$taille));
 			$legume->setSoupe($this->faker->randomElement(self::$soupe));
 			$legume->setCreatedAt($this->faker->dateTimeThisMonth());
-			$legume->setMangeurs($this->getRandomReference(Mangeur::class));
+			$legume->setMangeur($this->getRandomReference(Mangeur::class));
     	});
     	
         $manager->flush();
