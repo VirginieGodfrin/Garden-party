@@ -74,42 +74,58 @@ Il existe 3 types de relation OneToOne (OTO) ManyToOne/OneToMany (MTO) et ManyTo
 
 ### [ManyToOne/OneToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)
 1. Relation MTO entre une classe racinne et une classe feuille.
-Dans notre exemple, nous avons décidé que Mangeur (feuille) serait proriétaire de la relation et végétal (racinne) serait sont inverse. [ici](https://github.com/VirginieGodfrin/Garden-party/commit/1173c978f4509ec245774f41532c933de6abcdac)
+Dans notre exemple, nous avons décidé que Mangeur (feuille) serait proriétaire de la relation et Vegetal (racinne) serait sont inverse. [ici](https://github.com/VirginieGodfrin/Garden-party/commit/1173c978f4509ec245774f41532c933de6abcdac)
 
 > //src/Entity/Vegetal.php
+> 
 >   /**
 >    * @ORM\ManyToOne(targetEntity="Mangeur", inversedBy="vegetals")
 >    */
+>    
 >    private $mangeur;
 >    
-> //src/Entity/Mangeur.php  
+> //src/Entity/Mangeur.php 
+>  
 >   /**
 >    * @ORM\OneToMany(targetEntity="App\Entity\Vegetal", mappedBy="mangeur")
 >    */
+>    
 >    private $vegetals;
 
-Nous constatons qu'en base de donnée la table végetal va contenir la clé de la relation dans une colonne nommée 'mangeur_id'.
-Mais nous travaillons à partir de l'entité mangeur. 
-Dans le controller Mangeur, pour Récupérer les données de tous les mangeurs ainsi que les fleurs, fruits, et légumes, nous utilisons La méthode findAll().
+Nous constatons qu'en base de donnée la table vegetal va contenir la clé de la relation dans une colonne nommée 'mangeur_id'.
+- Nous travaillons à partir de l'entité mangeur. 
+Dans le controller Mangeur, pour récupérer les données de tous les mangeurs ainsi que les fleurs, fruits, et légumes, nous utilisons La méthode findAll().
 Si l'on fait un dump(), nous pouvons voir la 'PersistentCollection' qui nous contient des données des entitées opposées.
 
 >   public function indexAction(MangeurRepository $mangeurRepo)
+>   
 >   {
+>       
 >       $mangeurs = $mangeurRepo->findAll();
+>       
 >       return $this->render('mangeur/index.html.twig', [
+>       
 >           'mangeurs' => $mangeurs,
+>           
 >       ]);
+>       
 >   }
 
-Nous n'avons pas de controller pour la classe Vegetal. Nous travaillons sur ses classes feuilles: Fleur, Fruit, Legume.
+- Nous n'avons pas de controller pour la classe Vegetal. Nous travaillons sur ses classes feuilles: Fleur, Fruit, Legume.
 Nous récupérons leurs données dans leurs controllers respectifs grâce à la méthode findAll(). Et les données de la classe propriétaire 'mangeur' leurs sont associées.
 
 >   public function indexAction(LegumeRepository $legumeRepo)
->   {   
+>   
+>   {  
+>    
 >       $legumes = $legumeRepo->findAll();
+>       
 >       return $this->render('legume/index.html.twig', [
+>       
 >           'legumes' => $legumes,
+>           
 >       ]);
+>       
 >   }
 
 Merci LazyLoading !
