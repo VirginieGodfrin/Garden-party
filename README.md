@@ -53,6 +53,7 @@ Doctrine Extensions, le bon copain de doctrine dont le but est de nous faciliter
 
 Nous avons utiliser Slugable pour nomer de façon unique le paramettre passé dans les urls. [le slug](https://github.com/VirginieGodfrin/Garden-party/commit/211b17a80861f6d9709f1c61c4fbeb4756cdf87a)
 >/**
+>
 > *@Gedmo\Slug(fields={"nom"})
 > 
 > *@ORM\Column(type="string", length=255, unique=true)
