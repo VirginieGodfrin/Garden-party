@@ -34,24 +34,14 @@ ccl: Pour créer l'héritage de classe qu'il soit unique (STI) ou sur une classe
 > * @ORM\Entity
 > * @ORM\InheritanceType("JOINED")
 > * @ORM\DiscriminatorColumn(name="discr", type="string")
-> * @ORM\DiscriminatorMap({
-> *     "vegetal" = "Vegetal",
-> *     "fleur" = "Fleur", 
-> *     "fruit" = "Fruit",
-> *     "legume" = "Legume"
-> * })
-> * 
+> * @ORM\DiscriminatorMap({ "vegetal" = "Vegetal", "fleur" = "Fleur", "fruit" = "Fruit", "legume" = "Legume })
 > */
 > 
 > /**
 > * @ORM\Entity
 > * @ORM\InheritanceType("SINGLE_TABLE")
 > * @ORM\DiscriminatorColumn(name="discr", type="string")
-> * @ORM\DiscriminatorMap({
-> *  "user" = "User",
-> *  "jardinier" = "Jardinier",
-> *  "mangeur" = "Mangeur"
-> *  })
+> * @ORM\DiscriminatorMap({"user" = "User", "jardinier" = "Jardinier", "mangeur" = "Mangeur" })
 > */
 
 [doc](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/inheritance-mapping.html#class-table-inheritance)
