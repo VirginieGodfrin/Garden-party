@@ -53,10 +53,10 @@ Doctrine Extensions, le bon copain de doctrine dont le but est de nous faciliter
 
 Nous avons utiliser Slugable pour nomer de façon unique le paramettre passé dans les urls. [le slug](https://github.com/VirginieGodfrin/Garden-party/commit/211b17a80861f6d9709f1c61c4fbeb4756cdf87a)
 >/**
->     * @Gedmo\Slug(fields={"nom"})
->     * @ORM\Column(type="string", length=255, unique=true)
->     */
->    private $slug;
+> *@Gedmo\Slug(fields={"nom"})
+> *@ORM\Column(type="string", length=255, unique=true)
+> */
+> private $slug;
 
 Nous avons utiliser Timestampable pour ajouter systématiquement les propriétés createdAt et updatedAt de type dateTimes aux classes feuilles. [Timestampable](https://github.com/VirginieGodfrin/Garden-party/commit/e75afe45586b937a1377a6934c207c7bd34b97d7)
 >use TimestampableEntity;
