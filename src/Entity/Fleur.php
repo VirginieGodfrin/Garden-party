@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Mangeur;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FleurRepository")
@@ -64,5 +65,13 @@ class Fleur extends Vegetal
     public function getClassName()
     {
         return (new \ReflectionClass($this))->getShortName();
+    }
+
+    /**
+     * @return Collection|Jardinier[]
+     */
+    public function getJardiniers(): Collection
+    {
+        return parent::getJardiniers();
     }
 }

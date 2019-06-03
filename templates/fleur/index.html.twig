@@ -16,7 +16,18 @@
 				<h3>{{ fleur.nom }}</h3>
 				<p><small class="text-muted"> {{ fleur.bouquet }}</small></p>
 				<p>{{ fleur.description }}</p>
+				<p>Cultivée par :
+					<ul>
+						{# For "fonctionne" comme if #}
+						{% for jardinier in fleur.jardiniers %}
+							<li>{{ jardinier.fullName }}</li>
+							{% else %}	
+							<li>M.Nobody</li>
+						{% endfor %}
+					</ul>
+				</p>
 				<p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+				</p>
 			</div>
 			{% endfor %}
 		</div>
