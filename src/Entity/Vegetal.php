@@ -2,9 +2,13 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use App\Entity\Mangeur;
+use App\Entity\Jardinier;
 
 /**
  * @ORM\Entity
@@ -45,9 +49,19 @@ class Vegetal
     private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Mangeur", inversedBy="vegetals")
+     * @ORM\ManyToOne(targetEntity="Mangeur", inversedBy="vegetals")
      */
     private $mangeur;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Jardinier", mappedBy="vegetals")
+     */
+    private $jardiniers;
+
+    public function __construct()
+    {
+        $this->jardiniers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -91,6 +105,34 @@ class Vegetal
     public function setMangeur(?Mangeur $mangeur): self
     {
         $this->mangeur = $mangeur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Jardinier[]
+     */
+    public function getJardiniers(): Collection
+    {
+        return $this->jardiniers;
+    }
+
+    public function addJardinier(Jardinier $jardinier): self
+    {
+        if (!$this->jardiniers->contains($jardinier)) {
+            $this->jardiniers[] = $jardinier;
+            $jardinier->addVegetal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJardinier(Jardinier $jardinier): self
+    {
+        if ($this->jardiniers->contains($jardinier)) {
+            $this->jardiniers->removeElement($jardinier);
+            $jardinier->removeVegetal($this);
+        }
 
         return $this;
     }
