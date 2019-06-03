@@ -26,7 +26,54 @@ La table vegetal qui correspond à la classe racinne contient une colonne 'discr
 >["discr"]=>
        string(6) "legume"
 
-Et pas seulement, elle contient une colonne pour chacunes de ses propriétes (nom, description, createdAt ...)
+les valeurs de cettes colonnes corespondent aux clés passées dans le DiscriminatorMap et aux nom des différentes classes feuilles ! De plus, elle contient une colonne pour chacunes de ses propriétes (nom, description, createdAt ...)
 Les tables correspondantes aux classes feuilles contiennent des colonnes pour leur propriétées respectives.
 
+ccl: Pour créer l'héritage de classe qu'il soit unique (STI) ou sur une classe (cti) il est nécessaire de déclarer le type d'heritage, la colonne discriminante, le discriminatorMap
+>/**
+> * @ORM\Entity
+> * @ORM\InheritanceType("JOINED")
+> * @ORM\DiscriminatorColumn(name="discr", type="string")
+> * @ORM\DiscriminatorMap({
+> *     "vegetal" = "Vegetal",
+> *     "fleur" = "Fleur", 
+> *     "fruit" = "Fruit",
+> *     "legume" = "Legume"
+> * })
+> * 
+> */
+> 
+> /**
+> * @ORM\Entity
+> * @ORM\InheritanceType("SINGLE_TABLE")
+> * @ORM\DiscriminatorColumn(name="discr", type="string")
+> * @ORM\DiscriminatorMap({
+> *  "user" = "User",
+> *  "jardinier" = "Jardinier",
+> *  "mangeur" = "Mangeur"
+> *  })
+> */
+
 [doc](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/inheritance-mapping.html#class-table-inheritance)
+
+## [DoctrineExtensions](https://symfony.com/doc/current/doctrine/common_extensions.html)
+Doctrine Extensions, le bon copain de doctrine dont le but est de nous faciliter la vie avec des fonctionalités tel que Sluggable, Timestampable ...
+Nous avons utiliser Slugable pour nomer de façon unique le paramettre passer dans les urls. [le slug](https://github.com/VirginieGodfrin/Garden-party/commit/211b17a80861f6d9709f1c61c4fbeb4756cdf87a)
+>/**
+     * @Gedmo\Slug(fields={"nom"})
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $slug;
+
+Nous avons utiliser Timestampable pour ajouter systématiquement les propriétés createdAt et updatedAt de type dateTimes aux classes feuilles. [Timestampable](https://github.com/VirginieGodfrin/Garden-party/commit/e75afe45586b937a1377a6934c207c7bd34b97d7)
+>use TimestampableEntity;
+
+ccl: Les proriétées communes aux classes feuilles doivent être ajoutée à la classe racinne. C'est pour cette raison que nous utilisons l'héritage de classe !
+
+[Slug doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/sluggable.md) // [Timestampable doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/timestampable.md)
+
+##  les relations
+
+
+
+
