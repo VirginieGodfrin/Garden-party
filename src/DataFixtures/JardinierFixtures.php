@@ -4,9 +4,13 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Jardinier;
+use App\Entity\Fleur;
+use App\Entity\Fruit;
+use App\Entity\Legume;
 
-class JardinierFixtures extends BaseFixture
+class JardinierFixtures extends BaseFixture implements DependentFixtureInterface
 {
 	private static $outil = [
 		'Arrosoir',
@@ -34,8 +38,32 @@ class JardinierFixtures extends BaseFixture
 			$jardinier->setDescription($this->faker->text());
 			$jardinier->setOutil($this->faker->randomElement(self::$outil));
 			$jardinier->setMission($this->faker->randomElement(self::$mission));
+			$fleurs = $this->getRandomReferences(Fleur::class, $this->faker->numberBetween(0, 5));
+			$fruits = $this->getRandomReferences(Fruit::class, $this->faker->numberBetween(0, 5));
+			$legumes = $this->getRandomReferences(Legume::class, $this->faker->numberBetween(0, 5));
+
+            foreach ($fleurs as $fleur) {
+                $jardinier->addVegetal($fleur);
+            }
+
+            foreach ($fruits as $fruit) {
+                $jardinier->addVegetal($fruit);
+            }
+
+            foreach ($legumes as $legume) {
+                $jardinier->addVegetal($legume);
+            }
     	});
     	
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            FleurFixtures::class,
+            FruitFixtures::class,
+            LegumeFixtures::class
+        ];
     }
 }

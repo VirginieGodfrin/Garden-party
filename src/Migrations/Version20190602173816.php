@@ -25,7 +25,9 @@ final class Version20190602173816 extends AbstractMigration
         $this->addSql('ALTER TABLE vegetal DROP FOREIGN KEY FK_61DBFF36194A9C6');
         $this->addSql('DROP INDEX IDX_61DBFF36194A9C6 ON vegetal');
         $this->addSql('ALTER TABLE vegetal CHANGE mangeurs_id mangeur_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE vegetal ADD CONSTRAINT FK_61DBFF336C637D0 FOREIGN KEY (mangeur_id) REFERENCES user (id)');
+        // ajouter on delete casacade soi même !!!
+        $this->addSql('ALTER TABLE vegetal ADD CONSTRAINT FK_61DBFF336C637D0 FOREIGN KEY (mangeur_id) REFERENCES user (id) ON DELETE CASCADE');
+
         $this->addSql('CREATE INDEX IDX_61DBFF336C637D0 ON vegetal (mangeur_id)');
     }
 
