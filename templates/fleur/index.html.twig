@@ -16,6 +16,7 @@
 				<h3>{{ fleur.nom }}</h3>
 				<p><small class="text-muted"> {{ fleur.bouquet }}</small></p>
 				<p>{{ fleur.description }}</p>
+				<p>Mangée par : {{ fleur.mangeur.fullName }}</p>
 				<p>Cultivée par :
 					<ul>
 						{# For "fonctionne" comme if #}

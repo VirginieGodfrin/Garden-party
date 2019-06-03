@@ -57,10 +57,6 @@ class Fleur extends Vegetal
         return $this;
     }
 
-    public function getMangeurs(): ?Mangeur
-    {
-        return parent::getMangeurs();
-    }
     // https://stackoverflow.com/questions/22550368/how-can-we-get-class-name-of-the-entity-object-in-twig-view
     public function getClassName()
     {
