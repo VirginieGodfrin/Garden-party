@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Au jardin {% endblock %}
+
+{% block body %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-3">Les jardiniers!</h1>
+		</div>
+	</div>
+
+	<div class="container">
+	    <div class="row">
+	     {% for jardinier in jardiniers %}
+			<div class="col-md-4">
+				<h3>{{ jardinier.fullName }}</h3>
+				<p>{{ jardinier.description }}</p>
+				<p>
+					<ul>
+						<li>Outil: {{ jardinier.outil }}</li>
+						<li>Mission: {{ jardinier.mission }}</li>
+					</ul>
+				</p>
+				<p>
+					Vegétaux cultivés:
+					<ul>
+						{% for vegetal in jardinier.vegetals %}
+							<li> {{ vegetal.nom }} ( {{ vegetal.className }} )</li>
+						{% endfor %}
+					</ul>
+				</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+    <hr>
+
+{% endblock %}

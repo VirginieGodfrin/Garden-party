@@ -74,4 +74,9 @@ class User
         return $this;
     }
 
+    public function getFullName(): ?string
+    {
+        return $this->prenom . " " . $this->nom;
+    }
+
 }
