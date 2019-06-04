@@ -74,7 +74,7 @@ Il existe 3 types de relation OneToOne (OTO) ManyToOne/OneToMany (MTO/OTM) et Ma
 
 ### [ManyToOne/OneToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)
 1. [Relation MTO/OTM entre une classe racinne et une classe feuille.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/O1.mto_readme.md)
-2. [Relation MTM entre une classe racinne et une classe feuille.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/O1.mtm_readme.md)
+2. [Relation MTM entre une classe racinne et une classe feuille.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/02.mtm_readme.md)
 
 
 
