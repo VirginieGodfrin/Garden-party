@@ -18,7 +18,9 @@ class FleurController extends AbstractController
     public function indexAction(FleurRepository $fleurRepo)
     {
     	// $fleurs = $fleurRepo->findAll();
-        $fleurs = $fleurRepo->giveMeAllFlowers();
+        $fleurs = $fleurRepo->giveMeAllFlowers(); 
+        // $fleurs = $fleurRepo->giveMeAllFleurSQL();
+        
         return $this->render('fleur/index.html.twig', [
             'fleurs' => $fleurs,
         ]);

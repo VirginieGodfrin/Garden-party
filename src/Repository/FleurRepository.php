@@ -39,6 +39,20 @@ class FleurRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function giveMeAllFleurSQL(): array
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $query = $entityManager->createQuery(
+            'SELECT fleur
+            FROM App\Entity\Fleur fleur
+            WHERE fleur INSTANCE OF App\Entity\Vegetal'
+        );
+
+        // returns an array of Product objects
+        return $query->execute();
+    }
     
 
     // /**

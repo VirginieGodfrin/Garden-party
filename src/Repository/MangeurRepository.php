@@ -25,6 +25,7 @@ class MangeurRepository extends ServiceEntityRepository
     
     public function giveMeAllMangeurs()
     {
+
         return $this->createQueryBuilder('m')
             ->leftJoin('m.vegetals', 'v')
             ->addSelect('v')
@@ -33,7 +34,7 @@ class MangeurRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    
+
     // /**
     //  * @return Mangeur[] Returns an array of Mangeur objects
     //  */
