@@ -18,11 +18,12 @@ use App\Entity\Jardinier;
  *     "vegetal" = "Vegetal",
  *     "fleur" = "Fleur", 
  *     "fruit" = "Fruit",
- *     "legume" = "Legume"
+ *     "legume" = "Legume",
+ *     "arbre" = "Arbre"
  * })
  * 
  */
-class Vegetal
+class Vegetal 
 {
     use TimestampableEntity;
     /**

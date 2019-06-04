@@ -10,7 +10,7 @@ use App\Entity\Fruit;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArbreRepository")
  */
-class Arbre
+class Arbre extends Vegetal
 {
     /**
      * @ORM\Id()
@@ -36,7 +36,7 @@ class Arbre
 
     public function getId(): ?int
     {
-        return $this->id;
+        return parent::getId();
     }
 
     public function getType(): ?string
