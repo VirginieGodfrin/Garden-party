@@ -19,6 +19,21 @@ class JardinierRepository extends ServiceEntityRepository
         parent::__construct($registry, Jardinier::class);
     }
 
+    /**
+     * @return Jardinier[] Returns an array of Jardinier objects
+     */
+    public function giveMeAllJardinier()
+    {
+        return $this->createQueryBuilder('j')
+            ->innerJoin('j.vegetals', 'v')
+            ->addSelect('v')
+            ->orderBy('j.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Jardinier[] Returns an array of Jardinier objects
     //  */

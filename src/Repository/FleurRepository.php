@@ -30,9 +30,9 @@ class FleurRepository extends ServiceEntityRepository
     public function giveMeAllFlowers()
     {
         return $this->createQueryBuilder('f')
-            ->InnerJoin('f.mangeur', 'm')
+            ->innerJoin('f.mangeur', 'm')
             ->addSelect('m')
-            ->InnerJoin('f.jardiniers', 'j')
+            ->leftJoin('f.jardiniers', 'j')
             ->addSelect('j')
             ->orderBy('f.id', 'ASC')
             ->getQuery()
