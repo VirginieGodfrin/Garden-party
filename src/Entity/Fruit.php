@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Mangeur;
+use App\Entity\Arbre;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FruitRepository")
@@ -20,30 +21,25 @@ class Fruit extends Vegetal
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $arbre;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $salade;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Arbre", inversedBy="fruits")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $arbre;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->arbres = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return parent::getId();
-    }
-
-    public function getArbre(): ?string
-    {
-        return $this->arbre;
-    }
-
-    public function setArbre(string $arbre): self
-    {
-        $this->arbre = $arbre;
-
-        return $this;
     }
 
     public function getSalade(): ?string
@@ -62,4 +58,17 @@ class Fruit extends Vegetal
     {
         return (new \ReflectionClass($this))->getShortName();
     }
+
+    public function getArbre(): ?Arbre
+    {
+        return $this->arbre;
+    }
+
+    public function setArbre(?Arbre $arbre): self
+    {
+        $this->arbre = $arbre;
+
+        return $this;
+    }
+
 }
