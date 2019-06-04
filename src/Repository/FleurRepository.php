@@ -14,25 +14,31 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class FleurRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    protected $vegetalRepo;
+
+    public function __construct(RegistryInterface $registry, VegetalRepository $vegetalRepo)
     {
         parent::__construct($registry, Fleur::class);
+
+        $this->vegetalRepo = $vegetalRepo;
     }
 
     /**
      * @return Fleur[] Returns an array of Fleur objects
      */
     
-    // public function giveMeAllFlowersField()
-    // {
-    //     return $this->createQueryBuilder('f')
-    //         ->leftJoin('a.vegetal', 'v')
-    //         ->addSelect('v')
-    //         ->orderBy('v.id', 'ASC')
-    //         ->getQuery()
-    //         ->getResult()
-    //     ;
-    // }
+    public function giveMeAllFlowers()
+    {
+        return $this->createQueryBuilder('f')
+            ->InnerJoin('f.mangeur', 'm')
+            ->addSelect('m')
+            ->InnerJoin('f.jardiniers', 'j')
+            ->addSelect('j')
+            ->orderBy('f.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     
 
     // /**

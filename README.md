@@ -70,10 +70,10 @@ ccl: Les proriétées communes aux classes feuilles doivent être ajoutée à la
 [Slug doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/sluggable.md) // [Timestampable doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/timestampable.md)
 
 ##  les relations
-Il existe 3 types de relation OneToOne (OTO) ManyToOne/OneToMany (MTO) et ManyToMany (MTM); nous en testerons deux **ManyToOne/OneToMany** et **ManyToMany**
+Il existe 3 types de relation OneToOne (OTO) ManyToOne/OneToMany (MTO/OTM) et ManyToMany (MTM); nous en testerons deux **ManyToOne/OneToMany** et **ManyToMany**
 
 ### [ManyToOne/OneToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)
-1. [Relation MTO entre une classe racinne et une classe feuille.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/O1.mto_readme.md)
+1. [Relation MTO/OTM entre une classe racinne et une classe feuille.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/O1.mto_readme.md)
 
 
 
