@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Arbre;
+use App\Entity\Vegetal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -17,6 +18,20 @@ class ArbreRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Arbre::class);
+    }
+
+    public function giveMeAllArbresDQL(): array
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $query = $entityManager->createQuery(
+            "SELECT a
+            FROM App\Entity\Arbre a
+            WHERE a INSTANCE OF App\Entity\Vegetal "
+        );
+
+        // returns an array of objects
+        return $query->execute();
     }
 
     // /**

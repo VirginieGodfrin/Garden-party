@@ -7,6 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Fruit;
 use App\Entity\Mangeur;
+use App\Entity\Arbre;
 
 
 class FruitFixtures extends BaseFixture implements DependentFixtureInterface
@@ -22,19 +23,6 @@ class FruitFixtures extends BaseFixture implements DependentFixtureInterface
 		'Melon',
 		'Orange',
 		'Noix'
-	];
-
-	private static $arbre = [
-		'Pommier',
-		'Poirier',
-		'Pêchier',
-		'Abricotier',
-		'Fraisier',
-		'Groseillier',
-		'Framboisier',
-		'Melon',
-		'Oranger',
-		'Noyer'
 	];
 
 	private static $salade = [
@@ -62,7 +50,7 @@ class FruitFixtures extends BaseFixture implements DependentFixtureInterface
 		{
 			$fruit->setNom($this->faker->randomElement(self::$name));
 			$fruit->setDescription($this->faker->randomElement(self::$description));
-			$fruit->setArbre($this->faker->randomElement(self::$arbre));
+			$fruit->setArbre($this->getRandomReference(Arbre::class));
 			$fruit->setSalade($this->faker->randomElement(self::$salade));
 			$fruit->setCreatedAt($this->faker->dateTimeThisMonth());
 			$fruit->setMangeur($this->getRandomReference(Mangeur::class));
@@ -73,6 +61,10 @@ class FruitFixtures extends BaseFixture implements DependentFixtureInterface
 
     public function getDependencies()
     {
-        return [ MangeurFixtures::class ];
+        return [ 
+        	MangeurFixtures::class, 
+        	ArbreFixtures::class 
+        ];
+
     }
 }

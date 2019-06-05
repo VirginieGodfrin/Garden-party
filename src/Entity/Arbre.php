@@ -81,4 +81,12 @@ class Arbre extends Vegetal
 
         return $this;
     }
+
+    /**
+     * @return Collection|Jardinier[]
+     */
+    public function getJardiniers(): Collection
+    {
+        return parent::getJardiniers();
+    }
 }

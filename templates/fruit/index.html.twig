@@ -5,21 +5,25 @@
 {% block body %}
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">Les fruits !</h1>
+			<h1 class="display-3">Les fruits et les arbres !</h1>
 		</div>
 	</div>
 
 	<div class="container">
 		<div class="row">
+			<div class="col-sm-12">
+				<h2>Les fruits</h2>
+			</div>
 			{% for fruit in fruits %}
 			<div class="col-md-4">
 				<h3>{{ fruit.nom }}</h3>
+				<br>
 				<p>{{ fruit.description }}</p>
 				<p>
 					<ul>
-						<li>{{ fruit.arbre }}</li>
+						<li>{{ fruit.arbre.nom }}</li>
 						<li>Salade de {{ fruit.salade }}</li>
-						<li>Mangeur: {{ fruit.mangeur.name }}</li>
+						<li>Mangeur: {{ fruit.mangeur.fullName }}</li>
 					</ul>
 				</p>
 			</div>
@@ -27,6 +31,38 @@
 		</div>
 	</div>
 
-    <hr>
+	<hr>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>Les arbres</h2>
+			</div>
+			<br>
+			{% for arbre in arbres %}
+			<div class="col-md-4">
+				<h3>{{ arbre.nom }}</h3>
+				<p>{{ arbre.description }}</p>
+				<p>
+					<ul>
+						{% for fruit in arbre.fruits %}
+							<li>{{ fruit.nom }} mangé par {{ fruit.mangeur.nom }}
+							<ul>cultivé par: 
+								{% for jardinier in fruit.jardiniers %}
+									<li>{{ jardinier.nom }}</li>
+									{% else %}
+									<li>Mr.nobody</li>
+								{% endfor %}
+								
+							</ul>
+							</li>
+
+						{% endfor %}
+					</ul>
+				</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
 
 {% endblock %}
