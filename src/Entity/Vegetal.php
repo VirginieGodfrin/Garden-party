@@ -49,11 +49,6 @@ class Vegetal
      */
     private $slug;
 
-    // *
-    //  * @ORM\ManyToOne(targetEntity="Mangeur", inversedBy="vegetals")
-     
-    // private $mangeur;
-
     /**
      * @ORM\ManyToMany(targetEntity="Jardinier", mappedBy="vegetals")
      */

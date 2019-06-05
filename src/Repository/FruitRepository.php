@@ -25,10 +25,12 @@ class FruitRepository extends ServiceEntityRepository
     public function giveMeAllFruit()
     {
         return $this->createQueryBuilder('f')
-            ->leftJoin('f.arbre', 'a')
+            ->innerJoin('f.arbre', 'a')
             ->addSelect('a')
-            ->leftJoin('f.mangeur', 'm')
+            ->innerJoin('f.mangeur', 'm')
             ->addSelect('m')
+            ->leftJoin('f.jardiniers', 'j')
+            ->addSelect('j')
             ->orderBy('f.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
@@ -41,10 +43,13 @@ class FruitRepository extends ServiceEntityRepository
         $entityManager = $this->getEntityManager();
         
         $query = $entityManager->createQuery(
-            "SELECT a, f, m
+            "SELECT a, f, am, aj, fm, fj
             FROM App\Entity\Arbre a
             JOIN a.fruits f
-            JOIN f.mangeur m
+            JOIN a.jardiniers aj
+            JOIN a.mangeur am
+            JOIN f.mangeur fm
+            JOIN f.jardiniers fj
             WHERE a INSTANCE OF App\Entity\Vegetal
             AND f INSTANCE OF App\Entity\Vegetal "
         );

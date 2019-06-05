@@ -19,6 +19,7 @@ class FruitController extends AbstractController
     {
     	// $fruits = $fruitrepo->findAll();
         $fruits = $fruitrepo->giveMeAllFruit();
+
         $arbres = $fruitrepo->giveMeAllArbresDQL();
 
         return $this->render('fruit/index.html.twig', [
