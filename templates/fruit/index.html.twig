@@ -28,11 +28,11 @@
 				<p>
 					Mangeur: {{ fruit.mangeur.fullName }}
 				</p>
-				<p> Jardinniers: 
+				{# <p> Jardinniers: 
 					{% for jardinier in fruit.jardiniers %}
 						{{ jardinier.fullName }}
 					{% endfor %}
-				</p>
+				</p> #}
 			</div>
 			{% endfor %}
 		</div>
@@ -48,23 +48,20 @@
 			<div class="col-md-4">
 				<h3>{{ arbre.nom }}</h3>
 				<p>{{ arbre.description }}</p>
-				{# <p>
+				<p> Cultivé par
 					{% for jardinier in arbre.jardiniers %}
-						cultivé par : {{ jardinier.nom }}
+						{{ jardinier.fullName }}
+					{% else %}
+						Mr.Nobody
 					{% endfor %}	
-				</p> #}
-				{# <p>
-					<ul>
-						{% for fruit in arbre.fruits %}
-							<li>{{ fruit.nom }} mangé par {{ fruit.mangeur.nom }}
-							{% for jardinier in fruit.jardiniers %}
-								cultivé par {{ jardinier.nom }}
-							{% endfor %}	
-							</li>
-
-						{% endfor %}
-					</ul>
-				</p> #}
+				</p>
+				<p>Fruits:
+					{% for fruit in arbre.fruits %}
+						{{ fruit.nom }} 
+					{% else %}
+						NO FRUIT 
+					{% endfor %}
+				</p>
 			</div>
 			{% endfor %}
 		</div>

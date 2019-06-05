@@ -6,6 +6,7 @@ use App\Entity\Fruit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
+
 /**
  * @method Fruit|null find($id, $lockMode = null, $lockVersion = null)
  * @method Fruit|null findOneBy(array $criteria, array $orderBy = null)
@@ -25,14 +26,14 @@ class FruitRepository extends ServiceEntityRepository
     public function giveMeAllFruit()
     {
         return $this->createQueryBuilder('f')
-            ->innerJoin('f.arbre', 'a')
+            ->addSelect('f')
+            ->join('f.arbre', 'a')
             ->addSelect('a')
-            ->innerJoin('f.mangeur', 'm')
+            ->join('f.mangeur', 'm')
             ->addSelect('m')
             ->leftJoin('f.jardiniers', 'j')
             ->addSelect('j')
             ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
@@ -41,26 +42,16 @@ class FruitRepository extends ServiceEntityRepository
     public function giveMeAllArbresDQL(): array
     {
         $entityManager = $this->getEntityManager();
-        
-        $query = $entityManager->createQuery(
-            "SELECT a, f, am, aj, fm, fj
-            FROM App\Entity\Arbre a
-            JOIN a.fruits f
-            JOIN a.jardiniers aj
-            JOIN a.mangeur am
-            JOIN f.mangeur fm
-            JOIN f.jardiniers fj
-            WHERE a INSTANCE OF App\Entity\Vegetal
-            AND f INSTANCE OF App\Entity\Vegetal "
-        );
 
+        $query = $entityManager->createQuery(
+            "SELECT a, f, aj
+            FROM App\Entity\Arbre a
+            LEFT JOIN a.fruits f
+            LEFT JOIN a.jardiniers aj"
+         );
         // returns an array of objects
         return $query->execute();
     }
-
-    //  -- AND f.nom = '$fruitNom' 
-            // -- WHERE a INSTANCE OF App\Entity\Vegetal 
-            // -- AND f.nom = '$fruitNom' 
 
     // /**
     //  * @return Fruit[] Returns an array of Fruit objects
