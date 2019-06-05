@@ -34,10 +34,16 @@ class Mangeur extends User
      */
     private $vegetals;
 
+
+    // *
+    //  * @ORM\OneToMany(targetEntity="App\Entity\Vegetal", mappedBy="mangeur")
+     
+    // private $vegetals;
+
     public function __construct()
     {
         $this->fruits = new ArrayCollection();
-        $this->vegetals = new ArrayCollection();
+        // $this->vegetals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -99,4 +105,36 @@ class Mangeur extends User
 
         return $this;
     }
+
+
+    // /**
+    //  * @return Collection|Vegetal[]
+    //  */
+    // public function getVegetals(): Collection
+    // {
+    //     return $this->vegetals;
+    // }
+
+    // public function addVegetal(Vegetal $vegetal): self
+    // {
+    //     if (!$this->vegetals->contains($vegetal)) {
+    //         $this->vegetals[] = $vegetal;
+    //         $vegetal->setMangeur($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeVegetal(Vegetal $vegetal): self
+    // {
+    //     if ($this->vegetals->contains($vegetal)) {
+    //         $this->vegetals->removeElement($vegetal);
+    //         // set the owning side to null (unless already changed)
+    //         if ($vegetal->getMangeur() === $this) {
+    //             $vegetal->setMangeur(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
 }

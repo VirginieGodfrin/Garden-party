@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190604174452 extends AbstractMigration
+final class Version20190605112108 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -31,7 +31,7 @@ final class Version20190604174452 extends AbstractMigration
         $this->addSql('CREATE TABLE jardinier_vegetal (jardinier_id INT NOT NULL, vegetal_id INT NOT NULL, INDEX IDX_B9D46C6EE9EBD041 (jardinier_id), INDEX IDX_B9D46C6ED198D611 (vegetal_id), PRIMARY KEY(jardinier_id, vegetal_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE legume (id INT NOT NULL, taille VARCHAR(255) NOT NULL, soupe VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE pollinisateur (id INT AUTO_INCREMENT NOT NULL, fleur VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE vegetal ADD CONSTRAINT FK_61DBFF336C637D0 FOREIGN KEY (mangeur_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE vegetal ADD CONSTRAINT FK_61DBFF336C637D0 FOREIGN KEY (mangeur_id) REFERENCES user (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE arbre ADD CONSTRAINT FK_C8C4501ABF396750 FOREIGN KEY (id) REFERENCES vegetal (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE fleur ADD CONSTRAINT FK_3FFA923BF396750 FOREIGN KEY (id) REFERENCES vegetal (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE fruit ADD CONSTRAINT FK_A00BD2975142B8A3 FOREIGN KEY (arbre_id) REFERENCES arbre (id)');

@@ -4,7 +4,10 @@ namespace App\DataFixtures;
 
 use App\DataFixtures\BaseFixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Arbre;
+use App\Entity\Mangeur;
+
 
 class ArbreFixtures extends BaseFixture
 {

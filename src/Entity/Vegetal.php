@@ -49,15 +49,21 @@ class Vegetal
      */
     private $slug;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Mangeur", inversedBy="vegetals")
-     */
-    private $mangeur;
+    // *
+    //  * @ORM\ManyToOne(targetEntity="Mangeur", inversedBy="vegetals")
+     
+    // private $mangeur;
 
     /**
      * @ORM\ManyToMany(targetEntity="Jardinier", mappedBy="vegetals")
      */
     private $jardiniers;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Mangeur", inversedBy="vegetals")
+     */
+    private $mangeur;
+
 
     public function __construct()
     {
@@ -98,18 +104,6 @@ class Vegetal
         return $this->slug;
     }
 
-    public function getMangeur(): ?Mangeur
-    {
-        return $this->mangeur;
-    }
-
-    public function setMangeur(?Mangeur $mangeur): self
-    {
-        $this->mangeur = $mangeur;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Jardinier[]
      */
@@ -134,6 +128,18 @@ class Vegetal
             $this->jardiniers->removeElement($jardinier);
             $jardinier->removeVegetal($this);
         }
+
+        return $this;
+    }
+
+    public function getMangeur(): ?Mangeur
+    {
+        return $this->mangeur;
+    }
+
+    public function setMangeur(?Mangeur $mangeur): self
+    {
+        $this->mangeur = $mangeur;
 
         return $this;
     }
