@@ -28,11 +28,13 @@
 				<p>
 					Mangeur: {{ fruit.mangeur.fullName }}
 				</p>
-				{# <p> Jardinniers: 
+				<p> Jardinniers: 
 					{% for jardinier in fruit.jardiniers %}
 						{{ jardinier.fullName }}
+					{% else %}
+						M.Nobody
 					{% endfor %}
-				</p> #}
+				</p>
 			</div>
 			{% endfor %}
 		</div>
