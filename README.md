@@ -12,7 +12,7 @@ Sans véritable intéret !
 
 2. ### "Single Table Inheritance" - [Héritage de table unique.](https://github.com/VirginieGodfrin/Garden-party/commit/96be21f8cec3c699b1a4715aa4df39494565e533)
 
-Nous avons une **classe racinne** 'User' et deux **classes feuilles** 'Jardinier' & 'Mangeur'. Les classes feuilles n'existent pas en base de données. Leurs propriétées correspondent à des colonnes contenues dans la table 'user'. Nous pouvons les différentier par la **colonne discriminante**.
+Nous avons une **classe mère** 'User' et deux **classes enfants** 'Jardinier' & 'Mangeur'. Les classes enfants ne sont pas représentées en base de données. Leurs propriétées correspondent aux colonnes contenues dans la table 'user'. Nous pouvons les différentier par la **colonne discriminante**.
 >["discr"]=>
     string(9) "jardinier"
 
@@ -20,31 +20,39 @@ Nous avons une **classe racinne** 'User' et deux **classes feuilles** 'Jardinier
 
 3. ### "Class Table Inheritance" - [Héritage de table de classe.](https://github.com/VirginieGodfrin/Garden-party/commit/c0e2faec9a6f5bec0483ddcc15351b3254ee03c7)
 
-Nous avons une classe racinne 'Vegetal' et trois classes feuilles 'Fruit', 'Fleur', 'Legume'.
+Nous avons une classe mère 'Vegetal' et trois classes enfants 'Fruit', 'Fleur', 'Legume'.
 En base de donnée, nous avons quatre tables: 'vegetal', 'fruit', 'fleur', 'legume'.
-La table 'vegetal' qui correspond à la classe racinne contient une colonne discriminante :
+La table 'vegetal' qui correspond à la classe mère contient une colonne discriminante :
 >["discr"]=>
        string(6) "legume"
 
-les valeurs de cette colonne corespondent aux clés passées dans le DiscriminatorMap et aux noms des différentes classes feuilles ! De plus, elle contient une colonne pour chacunes de ses propriétes (nom, description, createdAt ...)
-Les tables correspondantes aux classes feuilles contiennent des colonnes pour leur propriétées respectives.
+les valeurs de cette colonne corespondent aux clés passées dans le DiscriminatorMap et aux noms des différentes classes enfants ! De plus, elle contient une colonne pour chacunes de ses propriétes (nom, description, createdAt ...)
+Les tables correspondantes aux classes enfant contiennent des colonnes pour leur propriétées respectives.
 
 ccl: Pour créer l'héritage de classe, qu'il soit unique (STI) ou sur une classe (CTI), il est nécessaire de déclarer **le type d'héritage**, **la colonne discriminante** et **le discriminatorMap**.
->/**
-> * @ORM\Entity
-> * @ORM\InheritanceType("JOINED")
-> * @ORM\DiscriminatorColumn(name="discr", type="string")
-> * @ORM\DiscriminatorMap({ "vegetal" = "Vegetal", "fleur" = "Fleur", "fruit" = "Fruit", "legume" = "Legume })
-> * 
-> */
+>   /**
+>   
+>    *@ORM\Entity
+>    
+>    *@ORM\InheritanceType("JOINED")
+>    
+>    *@ORM\DiscriminatorColumn(name="discr", type="string")
+>    
+>    *@ORM\DiscriminatorMap({ "vegetal" = "Vegetal", "fleur" = "Fleur", "fruit" = "    Fruit", "legume" = "Legume })
+>    
+>    */
 > 
-> /**
-> * @ORM\Entity
-> * @ORM\InheritanceType("SINGLE_TABLE")
-> * @ORM\DiscriminatorColumn(name="discr", type="string")
-> * @ORM\DiscriminatorMap({"user" = "User", "jardinier" = "Jardinier", "mangeur" = "Mangeur" })
-> * 
-> */
+>    /**
+>    
+>    *@ORM\Entity
+>    
+>    *@ORM\InheritanceType("SINGLE_TABLE")
+>    
+>    *@ORM\DiscriminatorColumn(name="discr", type="string")
+>    
+>    *@ORM\DiscriminatorMap({"user" = "User", "jardinier" = "Jardinier", "mangeur" = "Mangeur" })
+>    
+>    */
 
 [doc](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/inheritance-mapping.html#class-table-inheritance)
 
@@ -62,10 +70,10 @@ Nous avons utilisé Slugable pour nomer de façon unique le paramettre passé da
 > 
 > private $slug;
 
-Nous avons utilisé Timestampable pour ajouter systématiquement les propriétés createdAt et updatedAt de type dateTimes aux classes feuilles. [Timestampable](https://github.com/VirginieGodfrin/Garden-party/commit/e75afe45586b937a1377a6934c207c7bd34b97d7)
+Nous avons utilisé Timestampable pour ajouter systématiquement les propriétés createdAt et updatedAt de type dateTimes aux classes enfant. [Timestampable](https://github.com/VirginieGodfrin/Garden-party/commit/e75afe45586b937a1377a6934c207c7bd34b97d7)
 >use TimestampableEntity;
 
-ccl: Les proriétées communes aux classes feuilles doivent être ajoutée à la classe racinne. C'est pour cette raison que nous utilisons l'héritage de classe !
+ccl: Les proriétées communes aux classes enfant doivent être ajoutée à la classe mère. C'est pour cette raison que nous utilisons l'héritage de classe !
 
 [Slug doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/sluggable.md) // [Timestampable doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/timestampable.md)
 
@@ -73,10 +81,11 @@ ccl: Les proriétées communes aux classes feuilles doivent être ajoutée à la
 Il existe 3 types de relation OneToOne (OTO) ManyToOne/OneToMany (MTO/OTM) et ManyToMany (MTM); nous en testerons deux **ManyToOne/OneToMany** et **ManyToMany**
 
 ### [ManyToOne/OneToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)
-1. [Relation MTO/OTM entre une classe racinne et une classe feuille.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/O1.mto_readme.md)
+1. [Relation MTO/OTM entre une classe mère et une classe enfant.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/O1.mto_readme.md)
+2. [Relation MTO/OTM entre deux classes enfants]()
 
 ### [ManyToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)
-1. [Relation MTM entre une classe racinne et une classe feuille.](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#many-to-many-bidirectional)
+1. [Relation MTM entre une classe mère et une classe feuille.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/02.mtm_readme.md)
 
 
 
