@@ -51,6 +51,11 @@ class Arbre extends Vegetal
         return $this;
     }
 
+    public function getClassName()
+    {
+        return (new \ReflectionClass($this))->getShortName();
+    }
+
     /**
      * @return Collection|Fruit[]
      */

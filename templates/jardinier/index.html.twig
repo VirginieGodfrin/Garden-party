@@ -10,6 +10,7 @@
 	</div>
 
 	<div class="container">
+		<h2>les jardiniers</h2>
 	    <div class="row">
 	     {% for jardinier in jardiniers %}
 			<div class="col-md-4">
@@ -33,6 +34,31 @@
 			{% endfor %}
 		</div>
 	</div>
+
+    <hr>
+
+    <div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Les Jardiniers</h3>
+				{% for jardinier in jardiniers %}
+					<h4>{{ jardinier.fullName }}</h4>
+				{% endfor %}
+	      	</div>
+			<div class="col-md-4">
+				<h3>Les JardisFleurs</h3>
+				{% for jardiFleur in jardiniersFleur %}
+					<h4>{{ jardiFleur.fullName }}</h4>
+				{% endfor %}
+			</div>
+	      	<div class="col-md-4">
+				<h3>Les JardisArbres</h3>
+				{% for jardiArbre in jardiniersArbre %}
+					<h4>{{ jardiArbre.fullName }}</h4>
+				{% endfor %}
+			</div>
+		</div>
+	</div>    
 
     <hr>
 

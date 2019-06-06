@@ -60,6 +60,7 @@ class Vegetal
     private $mangeur;
 
 
+
     public function __construct()
     {
         $this->jardiniers = new ArrayCollection();

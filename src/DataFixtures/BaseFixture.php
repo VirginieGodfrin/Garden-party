@@ -27,6 +27,13 @@ abstract class BaseFixture extends Fixture
         $this->loadData($manager);
     }
 
+    protected function createOne(string $className, int $count, callable $factory)
+    {
+        $entity = new $className();
+        $factory($entity, $count);
+        $this->manager->persist($entity);       
+    }
+
 	protected function createMany(string $className, int $count, callable $factory)
     {
         for ($i = 0; $i < $count; $i++) {

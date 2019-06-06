@@ -17,9 +17,14 @@ class JardinierController extends AbstractController
     public function indexAction(JardinierRepository $jardinierRepo)
     {
     	$jardiniers = $jardinierRepo->giveMeAllJardinier();
+    	$jardiniersFleur = $jardinierRepo->giveMeAllJardinierFleur('fleur');
+    	$jardiniersArbre = $jardinierRepo->giveMeAllJardinierArbre('arbre');
 
         return $this->render('jardinier/index.html.twig', [
             'jardiniers' => $jardiniers,
+            'jardiniersFleur' => $jardiniersFleur,
+            'jardiniersArbre' => $jardiniersArbre
+
         ]);
     }
 }

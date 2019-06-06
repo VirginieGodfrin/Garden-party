@@ -18,8 +18,11 @@ class MangeurController extends AbstractController
     public function indexAction(MangeurRepository $mangeurRepo, EntityManagerInterface $em)
     {
     	$mangeurs = $mangeurRepo->giveMeAllMangeurs();
+        $mangeursLegumes = $mangeurRepo->giveMeAllMangeursLegumes('legume');
+        dump($mangeursLegumes);
         return $this->render('mangeur/index.html.twig', [
             'mangeurs' => $mangeurs,
+            'mangeursLegumes' => $mangeursLegumes
         ]);
     }
 }

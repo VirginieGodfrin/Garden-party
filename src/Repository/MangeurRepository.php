@@ -35,6 +35,20 @@ class MangeurRepository extends ServiceEntityRepository
         ;
     }
 
+    public function giveMeAllMangeursLegumes($value)
+    {
+
+        return $this->createQueryBuilder('m')
+            ->leftJoin('m.vegetals', 'v')
+            ->addSelect('v')
+            ->andWhere('v INSTANCE OF :discr')
+            ->setParameter('discr', $value)
+            ->orderBy('m.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Mangeur[] Returns an array of Mangeur objects
     //  */

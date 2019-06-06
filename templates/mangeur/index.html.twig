@@ -35,4 +35,27 @@
 
     <hr>
 
+    <div class="container">
+    	<h3>Les mangeurs de légumes</h3>
+		<div class="row">
+			{% for mangeur in mangeursLegumes %}
+				{# {{ dump(mangeur.vegetals)}} #}
+				<div class="col-md-4">
+					<h4>{{ mangeur.fullName }}</h4>
+					<p>
+						{{ mangeur.prenom }} mange
+						{% for vegetal in mangeur.vegetals %}
+							{% if vegetal.className  == 'Legume' %}
+							 {{ vegetal.nom }}
+							{% endif %}
+						{% endfor %} 
+					</p>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+
+
+
 {% endblock %}
