@@ -34,6 +34,8 @@ class FleurRepository extends ServiceEntityRepository
             ->addSelect('m')
             ->leftJoin('f.jardiniers', 'j')
             ->addSelect('j')
+            ->leftJoin('f.legumes', 'l')
+            ->addSelect('l')
             ->orderBy('f.id', 'ASC')
             ->getQuery()
             ->getResult()

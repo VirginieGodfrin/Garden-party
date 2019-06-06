@@ -27,6 +27,16 @@
 						{% endfor %}
 					</ul>
 				</p>
+				<p>Légumes :
+					<ul>
+						{# For "fonctionne" comme if #}
+						{% for legume in fleur.legumes %}
+							<li>{{ legume.nom }}</li>
+							{% else %}	
+							<li>No legume</li>
+						{% endfor %}
+					</ul>
+				</p>
 				<p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
 				</p>
 			</div>

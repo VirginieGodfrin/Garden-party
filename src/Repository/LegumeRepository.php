@@ -19,6 +19,22 @@ class LegumeRepository extends ServiceEntityRepository
         parent::__construct($registry, Legume::class);
     }
 
+    /**
+     * @return Legume[] Returns an array of Legume objects
+     */
+
+    public function findByfleurNom($fleurNom)
+    {
+        return $this->createQueryBuilder('l')
+            ->join('l.fleurs', 'f')
+            ->andWhere('f.nom = :nom')
+            ->setParameter('nom', $fleurNom)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
     // /**
     //  * @return Legume[] Returns an array of Legume objects
     //  */

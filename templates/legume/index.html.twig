@@ -6,6 +6,13 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">Les legumes !</h1>
+			<p>les legumes à la fleur escargots 
+				<ul>
+					{% for legume in legumesEscargots %}
+						<li>{{ legume.nom }}</li>
+					{% endfor %}
+				</ul>
+			</p>
 		</div>
 	</div>
 
@@ -20,6 +27,13 @@
 						<li>{{ legume.taille }}</li>
 						<li>Salade de {{ legume.soupe}}</li>
 						<li>Mangeur: {{ legume.mangeur.nom }}</li>
+					</ul>
+				</p>
+				<p>
+					<ul>
+						{% for fleur in legume.fleurs %}
+							<li>{{ fleur.nom }}</li>
+						{% endfor %}
 					</ul>
 				</p>
 			</div>

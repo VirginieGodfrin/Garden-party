@@ -6,6 +6,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Legume;
 use App\Entity\Mangeur;
+use App\Entity\Fleur;
 
 class LegumeFixtures extends BaseFixture implements DependentFixtureInterface
 {
@@ -54,6 +55,11 @@ class LegumeFixtures extends BaseFixture implements DependentFixtureInterface
 			$legume->setSoupe($this->faker->randomElement(self::$soupe));
 			$legume->setCreatedAt($this->faker->dateTimeThisMonth());
 			$legume->setMangeur($this->getRandomReference(Mangeur::class));
+			
+			$fleurs = $this->getRandomReferences(Fleur::class, $this->faker->numberBetween(0, 5));
+            foreach ($fleurs as $fleur) {
+                $legume->addFleur($fleur);
+            }
     	});
     	
         $manager->flush();
@@ -61,6 +67,9 @@ class LegumeFixtures extends BaseFixture implements DependentFixtureInterface
 
     public function getDependencies()
     {
-        return [ MangeurFixtures::class ];
+        return [ 
+        	MangeurFixtures::class,
+        	FleurFixtures::class
+         ];
     }
 }

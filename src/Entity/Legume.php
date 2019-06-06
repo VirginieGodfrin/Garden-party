@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +27,17 @@ class Legume extends Vegetal
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $soupe;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Fleur", inversedBy="legumes")
+     */
+    private $fleurs;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->fleurs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -59,5 +72,31 @@ class Legume extends Vegetal
     public function getClassName()
     {
         return (new \ReflectionClass($this))->getShortName();
+    }
+
+    /**
+     * @return Collection|Fleur[]
+     */
+    public function getFleurs(): Collection
+    {
+        return $this->fleurs;
+    }
+
+    public function addFleur(Fleur $fleur): self
+    {
+        if (!$this->fleurs->contains($fleur)) {
+            $this->fleurs[] = $fleur;
+        }
+
+        return $this;
+    }
+
+    public function removeFleur(Fleur $fleur): self
+    {
+        if ($this->fleurs->contains($fleur)) {
+            $this->fleurs->removeElement($fleur);
+        }
+
+        return $this;
     }
 }

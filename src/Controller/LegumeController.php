@@ -17,9 +17,11 @@ class LegumeController extends AbstractController
     public function indexAction(LegumeRepository $legumeRepo)
     {	
     	$legumes = $legumeRepo->findAll();
-        
+        $legumesEscargots = $legumeRepo->findByfleurNom('Escargots');
+        dump($legumesEscargots);
         return $this->render('legume/index.html.twig', [
             'legumes' => $legumes,
+            'legumesEscargots' => $legumesEscargots
         ]);
     }
 }
