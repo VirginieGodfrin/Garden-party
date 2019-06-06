@@ -57,10 +57,7 @@ ccl: Pour créer l'héritage de classe, qu'il soit unique (STI) ou sur une class
 
 [doc](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/inheritance-mapping.html#class-table-inheritance)
 
-## [DoctrineExtensions]()
-
-
-[Slug doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/sluggable.md) // [Timestampable doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/timestampable.md)
+## [DoctrineExtensions](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/04.doctrin_extension.md)
 
 ##  Les relations:
 Il existe 3 types de relation OneToOne (OTO) ManyToOne/OneToMany (MTO/OTM) et ManyToMany (MTM); nous en testerons deux **ManyToOne/OneToMany** et **ManyToMany**
