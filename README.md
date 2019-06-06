@@ -62,11 +62,11 @@ ccl: Pour créer l'héritage de classe, qu'il soit unique (STI) ou sur une class
 ##  Les relations:
 Il existe 3 types de relation OneToOne (OTO) ManyToOne/OneToMany (MTO/OTM) et ManyToMany (MTM); nous en testerons deux **ManyToOne/OneToMany** et **ManyToMany**
 
-A. ### [ManyToOne/OneToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)
+A. **[ManyToOne/OneToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)**
 1. [Relation MTO/OTM entre une classe mère et une classe enfant.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/O1.mto_readme.md)
 2. [Relation MTO/OTM entre deux classes enfants](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/03.mto_enfants_readme.md)
 
-B. ### [ManyToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)
+B. **[ManyToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)**
 1. [Relation MTM entre une classe mère et une classe feuille.](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/02.mtm_readme.md)
 2. [Relation MTO entre deux classes enfants](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/05.mtm_enfants_readme.md)
 
