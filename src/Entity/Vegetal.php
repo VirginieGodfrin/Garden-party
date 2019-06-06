@@ -55,7 +55,7 @@ class Vegetal
     private $jardiniers;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Mangeur", inversedBy="vegetals")
+     * @ORM\ManyToOne(targetEntity="Mangeur", inversedBy="vegetals")
      */
     private $mangeur;
 

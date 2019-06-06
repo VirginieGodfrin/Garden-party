@@ -30,6 +30,7 @@ les valeurs de cette colonne corespondent aux clés passées dans le Discriminat
 Les tables correspondantes aux classes enfant contiennent des colonnes pour leur propriétées respectives.
 
 ccl: Pour créer l'héritage de classe, qu'il soit unique (STI) ou sur une classe (CTI), il est nécessaire de déclarer **le type d'héritage**, **la colonne discriminante** et **le discriminatorMap**.
+
 >   /**
 >   
 >    *@ORM\Entity
@@ -56,24 +57,8 @@ ccl: Pour créer l'héritage de classe, qu'il soit unique (STI) ou sur une class
 
 [doc](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/inheritance-mapping.html#class-table-inheritance)
 
-## [DoctrineExtensions](https://symfony.com/doc/current/doctrine/common_extensions.html)
-Doctrine Extensions, le bon copain de doctrine dont le but est de nous faciliter la vie avec des fonctionalités tel que **Sluggable**, **Timestampable** et ... .
+## [DoctrineExtensions]()
 
-Nous avons utilisé Slugable pour nomer de façon unique le paramettre passé dans les urls. [le slug](https://github.com/VirginieGodfrin/Garden-party/commit/211b17a80861f6d9709f1c61c4fbeb4756cdf87a)
->/**
->
-> *@Gedmo\Slug(fields={"nom"})
-> 
-> *@ORM\Column(type="string", length=255, unique=true)
-> 
-> */
-> 
-> private $slug;
-
-Nous avons utilisé Timestampable pour ajouter systématiquement les propriétés createdAt et updatedAt de type dateTimes aux classes enfant. [Timestampable](https://github.com/VirginieGodfrin/Garden-party/commit/e75afe45586b937a1377a6934c207c7bd34b97d7)
->use TimestampableEntity;
-
-ccl: Les proriétées communes aux classes enfant doivent être ajoutée à la classe mère. C'est pour cette raison que nous utilisons l'héritage de classe !
 
 [Slug doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/sluggable.md) // [Timestampable doc](https://github.com/Atlantic18/DoctrineExtensions/blob/v2.4.x/doc/timestampable.md)
 

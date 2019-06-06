@@ -25,7 +25,7 @@ class JardinierRepository extends ServiceEntityRepository
     public function giveMeAllJardinier()
     {
         return $this->createQueryBuilder('j')
-            ->leftJoin('j.vegetals', 'v')
+            ->join('j.vegetals', 'v')
             ->addSelect('v')
             ->orderBy('j.id', 'ASC')
             ->getQuery()
@@ -36,7 +36,7 @@ class JardinierRepository extends ServiceEntityRepository
     public function giveMeAllJardinierFleur($value)
     {
         return $this->createQueryBuilder('j')
-            ->leftJoin('j.vegetals', 'v')
+            ->join('j.vegetals', 'v')
             ->addSelect('v')
             ->andWhere('v INSTANCE OF :discr')
             ->setParameter('discr', $value)
@@ -48,7 +48,7 @@ class JardinierRepository extends ServiceEntityRepository
     public function giveMeAllJardinierArbre($value)
     {
         return $this->createQueryBuilder('j')
-            ->leftJoin('j.vegetals', 'v')
+            ->join('j.vegetals', 'v')
             ->addSelect('v')
             ->andWhere('v INSTANCE OF :discr')
             ->setParameter('discr', $value)
