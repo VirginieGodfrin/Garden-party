@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Mangeur;
+use App\Entity\Vegetal;
 use Doctrine\Common\Collections\Collection;
 
 /**
@@ -82,6 +83,7 @@ class Fleur extends Vegetal
     {
         return parent::getJardiniers();
     }
+
 
     /**
      * @return Collection|Legume[]
