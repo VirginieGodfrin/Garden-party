@@ -78,10 +78,10 @@ class Jardinier extends User
 
     public function addVegetal(Vegetal $vegetal): self
     {
-        if ($this->vegetals->contains($vegetal)) {
+        if (!$this->vegetals->contains($vegetal)) {
             return $this;
-            
         }
+        
         $this->vegetals[] = $vegetal;
         $vegetal->addJardinier($this);
         return $this;
