@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Mangeur;
 use App\Entity\Vegetal;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FleurRepository")
@@ -22,11 +23,13 @@ class Fleur extends Vegetal
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Oups tu as ounlié le bouquet!")
      */
     private $bouquet;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Oups tu as ounlié la couleur!")
      */
     private $couleur;
 
@@ -84,7 +87,6 @@ class Fleur extends Vegetal
         return parent::getJardiniers();
     }
 
-
     /**
      * @return Collection|Legume[]
      */
@@ -95,21 +97,21 @@ class Fleur extends Vegetal
 
     public function addLegume(Legume $legume): self
     {
-        if (!$this->legumes->contains($legume)) {
-            $this->legumes[] = $legume;
-            $legume->addFleur($this);
+        if ($this->legumes->contains($legume)) {
+           return $this; 
         }
-
+        $this->legumes[] = $legume;
+        $legume->addFleur($this);
         return $this;
     }
 
     public function removeLegume(Legume $legume): self
     {
-        if ($this->legumes->contains($legume)) {
-            $this->legumes->removeElement($legume);
-            $legume->removeFleur($this);
+        if (!$this->legumes->contains($legume)) {
+           return $this; 
         }
-
+        $this->legumes->removeElement($legume);
+        $legume->removeFleur($this);
         return $this;
     }
 }

@@ -8,6 +8,7 @@ use App\Entity\Fleur;
 use App\Repository\FleurRepository;
 use Symfony\Component\HttpFoundation\Request;
 Use App\Form\FleurType;
+use Doctrine\ORM\EntityManagerInterface;
 /**
  * @Route("/fleur", name="fleur_")
  */
@@ -30,17 +31,24 @@ class FleurController extends AbstractController
     /**
      * @Route("/new/", name="new")
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, EntityManagerInterface $em)
     {
     	$fleur = new Fleur;
         $form = $this->createForm(FleurType::class, $fleur);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
+
             $fleur = $form->getData();
-            dump($fleur); die;
+            dump($fleur);
+
+            $em->persist($fleur);
+            
+            $em->flush();
+
+            return $this->redirectToRoute('fleur_index');
         }
-        
+
         return $this->render('fleur/new.html.twig', [
             'form' => $form->createView(),
         ]); 

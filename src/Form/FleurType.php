@@ -37,6 +37,7 @@ class FleurType extends AbstractType
                 'expanded'  => false,
                 'multiple'  => true,
                 'placeholder' => 'Choisis un jardinnier',
+                'by_reference' => false,
             ])
             ->add('legumes', EntityType::class, [
                 'class' => Legume::class,
@@ -45,10 +46,13 @@ class FleurType extends AbstractType
                 },
                 'expanded'  => false,
                 'multiple'  => true,
-                'placeholder' => 'Choisis un jardinnier',
+                'placeholder' => 'Choisis un légume',
+                'by_reference' => false,
             ])
             ->add('save', SubmitType::class, [
-                'attr' => ['class' => 'save'],
+                'attr' => [
+                    'class' => 'save',
+                ],
             ])
             ;
     }

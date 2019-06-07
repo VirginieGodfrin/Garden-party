@@ -9,6 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use App\Entity\Mangeur;
 use App\Entity\Jardinier;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -35,11 +36,13 @@ class Vegetal
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Oups tu as ounlié le nom!")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Oups tu as ounlié la description!")
      */
     private $description;
 
@@ -110,10 +113,12 @@ class Vegetal
 
     public function addJardinier(Jardinier $jardinier): self
     {
-        if (!$this->jardiniers->contains($jardinier)) {
-            $this->jardiniers[] = $jardinier;
-            $jardinier->addVegetal($this);
+        if ($this->jardiniers->contains($jardinier)) {
+             return $this; 
         }
+
+        $this->jardiniers[] = $jardinier;
+        $jardinier->addVegetal($this);
 
         return $this;
     }

@@ -29,7 +29,7 @@ class Legume extends Vegetal
     private $soupe;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Fleur", inversedBy="legumes")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Fleur", inversedBy="legumes", cascade={"persist"})
      */
     private $fleurs;
 
@@ -84,19 +84,22 @@ class Legume extends Vegetal
 
     public function addFleur(Fleur $fleur): self
     {
-        if (!$this->fleurs->contains($fleur)) {
-            $this->fleurs[] = $fleur;
+        if ($this->fleurs->contains($fleur)) {
+            return $this;
         }
-
+        $this->fleurs[] = $fleur;
+        $fleur->addLegume($this);
         return $this;
     }
 
     public function removeFleur(Fleur $fleur): self
     {
-        if ($this->fleurs->contains($fleur)) {
-            $this->fleurs->removeElement($fleur);
+        if (!$this->fleurs->contains($fleur)) {
+           return $this;
         }
 
+        $this->fleurs->removeElement($fleur);
+        $fleur->removeLegume($this);
         return $this;
     }
 }
