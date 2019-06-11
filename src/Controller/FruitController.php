@@ -22,9 +22,12 @@ class FruitController extends AbstractController
 
         $arbres = $fruitrepo->giveMeAllArbresDQL();
 
+        $arbresAfruits = $fruitrepo->giveMeAllArbresWithFruitsDQL();
+
         return $this->render('fruit/index.html.twig', [
         	'fruits' => $fruits,
-            'arbres' => $arbres
+            'arbres' => $arbres,
+            'arbresAfruits' => $arbresAfruits
         ]);
     }
 }

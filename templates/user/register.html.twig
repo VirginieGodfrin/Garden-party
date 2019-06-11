@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Register!{% endblock %}
+
+{% block body %}	
+<div class="container">
+	<div class="row">
+		<div class="text-center">
+			{# {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }} #}
+
+			{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+				<div class="my-custom-class-for-errors">
+					{{ form_errors(form) }}
+				</div>
+				<div class="row">
+
+					<div class="col-sm-12">
+						{{ form_row(form.nom) }}
+					</div>
+
+					<div class="col-sm-12">
+						{{ form_row(form.prenom) }}
+					</div>
+					<div class="col-sm-12">
+						{{ form_row(form.type) }}
+					</div>
+					<br>
+					<div>
+						<button type="submit" class="btn btn-primary">Register</button>
+					</div>
+				</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block javascripts %} 
+	{{ parent() }}
+	<script src="{{ asset('js/add_jardinier_fields.js') }}"></script> 
+{% endblock %}

@@ -10,7 +10,7 @@ class MangeurFixtures extends BaseFixture
 {
 	public function loadData(ObjectManager $manager)
     {
-		$this->createMany(Mangeur::class, 10, function(Mangeur $mangeur, $count)
+		$this->createMany(Mangeur::class, 3, function(Mangeur $mangeur, $count)
 		{
 			$mangeur->setNom($this->faker->lastName());
 			$mangeur->setPrenom($this->faker->firstName());

@@ -19,7 +19,7 @@ class MangeurController extends AbstractController
     {
     	$mangeurs = $mangeurRepo->giveMeAllMangeurs();
         $mangeursLegumes = $mangeurRepo->giveMeAllMangeursLegumes('legume');
-        dump($mangeursLegumes);
+
         return $this->render('mangeur/index.html.twig', [
             'mangeurs' => $mangeurs,
             'mangeursLegumes' => $mangeursLegumes

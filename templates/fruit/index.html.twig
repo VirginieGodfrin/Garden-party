@@ -39,7 +39,7 @@
 			{% endfor %}
 		</div>
 	</div>
-
+	<hr>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
@@ -68,5 +68,33 @@
 			{% endfor %}
 		</div>
 	</div>
-
+	<hr>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>Les arbres à fruits</h2>
+			</div>
+			<br>
+			{% for arbre in arbresAfruits %}
+			<div class="col-md-4">
+				<h3>{{ arbre.nom }}</h3>
+				<p>{{ arbre.description }}</p>
+				<p> Cultivé par
+					{% for jardinier in arbre.jardiniers %}
+						{{ jardinier.fullName }}
+					{% else %}
+						Mr.Nobody
+					{% endfor %}	
+				</p>
+				<p>Fruits:
+					{% for fruit in arbre.fruits %}
+						{{ fruit.nom }} 
+					{% else %}
+						NO FRUIT 
+					{% endfor %}
+				</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}

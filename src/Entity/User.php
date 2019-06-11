@@ -2,6 +2,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -24,11 +25,13 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Oups tu as ounlié le nom!")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Oups tu as ounlié le prenom!")
      */
     private $prenom;
 
@@ -36,7 +39,6 @@ class User
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
-
 
     public function getNom(): ?string
     {

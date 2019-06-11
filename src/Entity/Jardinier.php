@@ -78,7 +78,7 @@ class Jardinier extends User
 
     public function addVegetal(Vegetal $vegetal): self
     {
-        if (!$this->vegetals->contains($vegetal)) {
+        if ($this->vegetals->contains($vegetal)) {
             return $this;
         }
         
@@ -99,6 +99,11 @@ class Jardinier extends User
     public function __toString()
     {
         return $this->nom;
+    }
+
+    public function getClassName()
+    {
+        return (new \ReflectionClass($this))->getShortName();
     }
 
 }

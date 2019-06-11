@@ -26,7 +26,6 @@ class FruitRepository extends ServiceEntityRepository
     public function giveMeAllFruit()
     {
         return $this->createQueryBuilder('f')
-            ->addSelect('f')
             ->join('f.arbre', 'a')
             ->addSelect('a')
             ->join('f.mangeur', 'm')
@@ -47,6 +46,20 @@ class FruitRepository extends ServiceEntityRepository
             "SELECT a, f, aj
             FROM App\Entity\Arbre a
             LEFT JOIN a.fruits f
+            LEFT JOIN a.jardiniers aj"
+         );
+        // returns an array of objects
+        return $query->execute();
+    }
+
+    public function giveMeAllArbresWithFruitsDQL(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            "SELECT a, f, aj
+            FROM App\Entity\Arbre a
+            JOIN a.fruits f
             LEFT JOIN a.jardiniers aj"
          );
         // returns an array of objects

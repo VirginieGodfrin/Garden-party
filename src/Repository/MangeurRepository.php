@@ -27,7 +27,7 @@ class MangeurRepository extends ServiceEntityRepository
     {
 
         return $this->createQueryBuilder('m')
-            ->leftJoin('m.vegetals', 'v')
+            ->LeftJoin('m.vegetals', 'v')
             ->addSelect('v')
             ->orderBy('m.id', 'ASC')
             ->getQuery()
