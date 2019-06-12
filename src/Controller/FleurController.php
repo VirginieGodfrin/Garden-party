@@ -40,7 +40,30 @@ class FleurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
 
             $fleur = $form->getData();
-            dump($fleur);
+
+            $em->persist($fleur);
+            
+            $em->flush();
+
+            return $this->redirectToRoute('fleur_index');
+        }
+
+        return $this->render('fleur/new.html.twig', [
+            'form' => $form->createView(),
+        ]); 
+    }
+
+    /**
+     * @Route("/{slug}/edit/", name="edit")
+     */
+    public function editAction(Fleur $fleur, Request $request, EntityManagerInterface $em)
+    {
+        $form = $this->createForm(FleurType::class, $fleur);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $fleur = $form->getData();
 
             $em->persist($fleur);
             

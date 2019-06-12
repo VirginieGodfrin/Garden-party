@@ -62,6 +62,10 @@ class Vegetal
      */
     private $mangeur;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isUpdate;
 
 
     public function __construct()
@@ -141,6 +145,18 @@ class Vegetal
     public function setMangeur(?Mangeur $mangeur): self
     {
         $this->mangeur = $mangeur;
+
+        return $this;
+    }
+
+    public function getIsUpdate(): ?bool
+    {
+        return $this->isUpdate;
+    }
+
+    public function setIsUpdate(?bool $isUpdate): self
+    {
+        $this->isUpdate = $isUpdate;
 
         return $this;
     }

@@ -12,7 +12,10 @@
 		<div class="row">
 			{% for fleur in fleurs %}
 			<div class="col-md-4" style="background-color:{{ fleur.couleur }}">
-				<p><small>{{ fleur.createdAt|date('d-m-Y') }}</small></p>
+				<p><small>{{ fleur.createdAt|date('d-m-Y') }} {{ fleur.createdAt|date('H:i:s') }}</small></p>
+				{% if fleur.updatedAt %}
+					<p><small>{{ fleur.updatedAt|date('d-m-Y') }} {{ fleur.updatedAt|date('H:i:s') }}</small></p>
+				{% endif %}
 				<h3>{{ fleur.nom }}</h3>
 				<p><small class="text-muted"> {{ fleur.bouquet }}</small></p>
 				<p>{{ fleur.description }}</p>
@@ -37,7 +40,7 @@
 						{% endfor %}
 					</ul>
 				</p>
-				<p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+				<p><a class="btn btn-secondary" href="{{ path('fleur_edit', { slug : fleur.slug }) }}" role="button">Edit</a></p>
 				</p>
 			</div>
 			{% endfor %}

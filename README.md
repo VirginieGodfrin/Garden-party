@@ -78,6 +78,9 @@ B. **[ManyToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/
 ##  Les formulaire et la validation des données:
 1. [A partir d'une CTI](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/06.form_classe_enfant.md).
 
+2. A partir d'une STI
+
 NB: Ce projet est une ébauche d'un tuto. Merci d'être indulgent pour l'aspect brouillon de la chose ! 
+
 
 
