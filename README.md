@@ -83,6 +83,6 @@ B. **[ManyToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/
 NB: Ce projet est une ébauche d'un tuto. Merci d'être indulgent pour l'aspect brouillon de la chose ! 
 
 ## Les Events
-### [Lifecycle Callbacks - Les callback de cycle de vie](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/08.event_lifeCycleCallback.md)
+### [Lifecycle Callbacks - Les callbacks de cycle de vie](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/08.event_lifeCycleCallback.md)
 ### Doctrine Event Listeners and Subscribers 
 
