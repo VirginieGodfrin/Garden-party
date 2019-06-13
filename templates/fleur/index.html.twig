@@ -13,7 +13,8 @@
 			{% for fleur in fleurs %}
 			<div class="col-md-4" style="background-color:{{ fleur.couleur }}">
 				<p><small>{{ fleur.createdAt|date('d-m-Y') }} {{ fleur.createdAt|date('H:i:s') }}</small></p>
-				{% if fleur.updatedAt %}
+				{# {{ dump(fleur.isUpdate)}} #}
+				{% if fleur.isUpdate %}
 					<p><small>{{ fleur.updatedAt|date('d-m-Y') }} {{ fleur.updatedAt|date('H:i:s') }}</small></p>
 				{% endif %}
 				<h3>{{ fleur.nom }}</h3>

@@ -64,9 +64,6 @@ class FleurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
 
             $fleur = $form->getData();
-
-            $em->persist($fleur);
-            
             $em->flush();
 
             return $this->redirectToRoute('fleur_index');

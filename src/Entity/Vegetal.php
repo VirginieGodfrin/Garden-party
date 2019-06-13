@@ -10,6 +10,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use App\Entity\Mangeur;
 use App\Entity\Jardinier;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
 /**
  * @ORM\Entity
@@ -22,7 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     "legume" = "Legume",
  *     "arbre" = "Arbre"
  * })
- * 
+ * @ORM\HasLifecycleCallbacks()
  */
 class Vegetal 
 {
@@ -42,7 +43,7 @@ class Vegetal
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank(message="Oups tu as ounlié la description!")
+     * @Assert\NotBlank(message="Oups tu as oublié la description!")
      */
     private $description;
 
@@ -63,9 +64,9 @@ class Vegetal
     private $mangeur;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
-    private $isUpdate;
+    private $isUpdate = false;
 
 
     public function __construct()
@@ -154,10 +155,15 @@ class Vegetal
         return $this->isUpdate;
     }
 
-    public function setIsUpdate(?bool $isUpdate): self
+    /**
+     * @ORM\preUpdate
+     */
+    public function setIsUpdate(): self
     {
-        $this->isUpdate = $isUpdate;
+        $this->isUpdate = true;
 
         return $this;
     }
+
+    
 }

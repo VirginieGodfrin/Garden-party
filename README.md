@@ -60,7 +60,7 @@ ccl: Pour créer l'héritage de classe, qu'il soit unique (STI) ou sur une class
 ## [DoctrineExtensions](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/04.doctrin_extension.md)
 
 ##  Les relations:
-Il existe 3 types de relation OneToOne (OTO) ManyToOne/OneToMany (MTO/OTM) et ManyToMany (MTM); nous en testerons deux **ManyToOne/OneToMany** et **ManyToMany**
+Il existe 3 types de relation OneToOne (OTO) ManyToOne/OneToMany (MTO/OTM) et ManyToMany (MTM); nous en testerons deux **ManyToOne/OneToMany** et **ManyToMany**.
 
 A. **[ManyToOne/OneToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#one-to-many-bidirectional)**
 
@@ -82,5 +82,7 @@ B. **[ManyToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/
 
 NB: Ce projet est une ébauche d'un tuto. Merci d'être indulgent pour l'aspect brouillon de la chose ! 
 
-
+## les Events
+### Lifecycle Callbacks - Les callback de cycle de vie (EVENT)
+### Doctrine Event Listeners and Subscribers
 
