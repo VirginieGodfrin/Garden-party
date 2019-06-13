@@ -75,14 +75,14 @@ B. **[ManyToMany](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/
 2. [Relation MTO entre deux classes enfants](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/05.mtm_enfants_readme.md)
 
 
-##  Les formulaire et la validation des données:
+##  Les formulaires et la validation des données:
 1. [A partir d'une CTI](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/06.form_classe_enfant.md).
 
 2. [A partir d'une STI](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/07.form_sti.md)
 
 NB: Ce projet est une ébauche d'un tuto. Merci d'être indulgent pour l'aspect brouillon de la chose ! 
 
-## les Events
-### Lifecycle Callbacks - Les callback de cycle de vie (EVENT)
-### Doctrine Event Listeners and Subscribers
+## Les Events
+### [Lifecycle Callbacks - Les callback de cycle de vie](https://github.com/VirginieGodfrin/Garden-party/blob/master/readMe/08.event_lifeCycleCallback.md)
+### Doctrine Event Listeners and Subscribers 
 
