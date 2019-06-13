@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Les fleurs {% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="text-center">
+				{{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+			</div>
+		</div>
+	</div>
+	
+	{% endblock %}

@@ -5,9 +5,11 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Listener\LegumesListener;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LegumeRepository")
+ * @ORM\EntityListeners({"LegumeListener"})
  */
 class Legume extends Vegetal
 {
@@ -67,7 +69,6 @@ class Legume extends Vegetal
 
         return $this;
     }
-
 
     public function getClassName()
     {
