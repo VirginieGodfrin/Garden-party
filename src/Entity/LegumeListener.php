@@ -3,19 +3,17 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
-
+use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class LegumeListener
 {
     /** @ORM\PrePersist */
     public function prePersistRenameSoupe(Legume $legume, LifecycleEventArgs $args) { 
-        // $this->logger->info('I love Tony Vairelles\' hairdresser.');
         $em = $args->getObjectManager();
         $entity = $args->getObject();
-        // dump($em);
-        // dump($entity);
-        // dump($legume); 
+
         if ($legume instanceof Legume && $legume->getFleurs() && $legume->getNom() ) {
             $fleurs = $legume->getFleurs();
             $nomDeFleurs = "";
@@ -24,41 +22,29 @@ class LegumeListener
             }
             $legume->setSoupe("Soupe de ".$legume->getNom(). " et de " . $nomDeFleurs);
         }
-        dump($legume);
+
     }
 
-    // /** @PostPersist */
-    // public function postPersistHandler(Legumes $legumes, LifecycleEventArgs $event) { 
-   	// 	//...
-    // }
+    /** @ORM\PreUpdate */
+    public function preUpdateValideName(PreUpdateEventArgs $args) { 
+        $entity = $args->getEntity();
+        $changeSet = $args->getEntityChangeSet();
+        $changeField = $args->hasChangedField('nom');
+        $oldValue = $args->getOldValue('nom');
+        $newValue = $args->getNewValue('nom');
 
-    // /** @PreUpdate */
-    // public function preUpdateHandler(Legumes $legumes, PreUpdateEventArgs $event) { 
-    // // ...
-    // }
+        if ($args->getEntity() instanceof legume) {
+            if ($args->hasChangedField('nom')) {
+                $this->validateName($newValue);
+            }
+        }
+    }
 
-    // /** @PostUpdate */
-    // public function postUpdateHandler(Legumes $legumes, LifecycleEventArgs $event) { 
-    // // ...
-    // }
+    private function validateName($newValue)
+    {
+        if($newValue == "carotte"){
+            throw new NotFoundHttpException("Il ne fallait pas appeler son légume carotte");
+        }
+    }
 
-    // /** @PostRemove */
-    // public function postRemoveHandler(Legumes $legumes, LifecycleEventArgs $event) { 
-    // // ...
-    // }
-
-    // /** @PreRemove */
-    // public function preRemoveHandler(Legumes $legumes, LifecycleEventArgs $event) { 
-    // // ...
-    // }
-
-    // /** @PreFlush */
-    // public function preFlushHandler(Legumes $legumes, PreFlushEventArgs $event) { 
-    // // ...
-    // }
-
-    // /** @PostLoad */
-    // public function postLoadHandler(Legumes $legumes, LifecycleEventArgs $event) { 
-    // // ...
-    // }
 }

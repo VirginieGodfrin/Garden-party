@@ -22,7 +22,7 @@ class LegumeController extends AbstractController
     {	
     	$legumes = $legumeRepo->findAll();
         $legumesEscargots = $legumeRepo->findByfleurNom('Escargots');
-        dump($legumesEscargots);
+        // dump($legumesEscargots);
         return $this->render('legume/index.html.twig', [
             'legumes' => $legumes,
             'legumesEscargots' => $legumesEscargots
@@ -49,7 +49,31 @@ class LegumeController extends AbstractController
             return $this->redirectToRoute('legume_index');
         }
 
-        return $this->render('legume/new.html.twig', [
+        return $this->render('legume/form.html.twig', [
+            'form' => $form->createView(),
+        ]); 
+    }
+
+    /**
+     * @Route("/{slug}/edit", name="edit")
+     */
+    public function editAction(Request $request, EntityManagerInterface $em, Legume $legume)
+    {   
+
+        $form = $this->createForm(legumeType::class, $legume);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $legume = $form->getData();
+             // dump($legume);die;
+
+            $em->flush();
+
+            return $this->redirectToRoute('legume_index');
+        }
+
+        return $this->render('legume/form.html.twig', [
             'form' => $form->createView(),
         ]); 
     }
