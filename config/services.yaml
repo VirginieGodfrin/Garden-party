@@ -31,3 +31,7 @@ services:
         tags:
             - { name: doctrine.orm.entity_listener }
 
+    App\EventListener\SearchIndexer:
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+

@@ -10,6 +10,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use App\Entity\Mangeur;
 use App\Entity\Jardinier;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as myAssert;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
 /**
@@ -37,7 +38,8 @@ class Vegetal
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Oups tu as ounlié le nom!")
+     * @Assert\NotBlank(message="Oups tu as oublié la description!")
+     * @myAssert\ContainsCarotte
      */
     private $nom;
 

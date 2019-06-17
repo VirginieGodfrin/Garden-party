@@ -29,8 +29,7 @@ class UserController extends AbstractController
             $type = $form['type']->getData();
             $type->setNom($user->getNom());
             $type->setPrenom($user->getPrenom());
-
-            $em->persist($type); 
+            $em->persist($type);
             $em->flush();
 
             if($type->getClassName() === "Mangeur"){

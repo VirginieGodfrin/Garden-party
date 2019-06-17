@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Listener\LegumesListener;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as xAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LegumeRepository")
@@ -22,6 +24,7 @@ class Legume extends Vegetal
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Oups tu as ounlié la taille!")
      */
     private $taille;
 

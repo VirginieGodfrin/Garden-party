@@ -66,7 +66,7 @@ class LegumeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
 
             $legume = $form->getData();
-             // dump($legume);die;
+            // dump($legume);die;
 
             $em->flush();
 

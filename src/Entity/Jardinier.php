@@ -39,10 +39,10 @@ class Jardinier extends User
         $this->vegetals = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    // public function getId(): ?int
+    // {
+    //     return $this->id;
+    // }
 
     public function getOutil(): ?string
     {

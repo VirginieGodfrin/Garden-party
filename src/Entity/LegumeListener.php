@@ -5,6 +5,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 class LegumeListener
@@ -26,24 +28,33 @@ class LegumeListener
     }
 
     /** @ORM\PreUpdate */
-    public function preUpdateValideName(PreUpdateEventArgs $args) { 
-        $entity = $args->getEntity();
-        $changeSet = $args->getEntityChangeSet();
-        $changeField = $args->hasChangedField('nom');
-        $oldValue = $args->getOldValue('nom');
-        $newValue = $args->getNewValue('nom');
+    public function preUpdateValideName(Legume $legume, PreUpdateEventArgs $args) {
+        $changeField = null;
+        $field = '';
 
-        if ($args->getEntity() instanceof legume) {
-            if ($args->hasChangedField('nom')) {
-                $this->validateName($newValue);
+        if ($args->getEntity() instanceof Legume) {
+
+            $changeSet = $args->getEntityChangeSet();
+
+            foreach ($changeSet as $key => $value) {
+                if($key = 'nom'){
+                   $changeField = $args->hasChangedField('nom');
+                   $field = 'nom';
+                }
+            }
+
+            if (true === $changeField) {
+                $oldValue = $args->getOldValue($field);
+                $newValue = $args->getNewValue($field);
+                $this->validateName($newValue, $oldValue);
             }
         }
     }
 
-    private function validateName($newValue)
+    private function validateName($newValue, $oldValue)
     {
-        if($newValue == "carotte"){
-            throw new NotFoundHttpException("Il ne fallait pas appeler son légume carotte");
+        if($newValue !== $oldValue){
+            throw new NotFoundHttpException("Il ne fallait pas changer de nom de légume");
         }
     }
 
