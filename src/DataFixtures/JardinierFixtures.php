@@ -13,23 +13,7 @@ use App\Entity\Arbre;
 
 class JardinierFixtures extends BaseFixture implements DependentFixtureInterface
 {
-	private static $outil = [
-		'Arrosoir',
-		'Bêche',
-		'Cisaille',
-		'Plantoir',
-		'Pelle',
-		'Râteau'
-	];
 
-	private static $mission = [
-		'Nourrir les poules',
-		'Retourner le jardin',
-		'Couper la haie',
-		'Planter des salades',
-		'Ramasser les pommes',
-		'Faire la sieste'
-	];
     public function loadData(ObjectManager $manager)
     {
 		$this->createMany(Jardinier::class, 5, function(Jardinier $jardinier, $count)
@@ -37,8 +21,6 @@ class JardinierFixtures extends BaseFixture implements DependentFixtureInterface
 			$jardinier->setNom($this->faker->lastName());
 			$jardinier->setPrenom($this->faker->firstName());
 			$jardinier->setDescription($this->faker->text());
-			$jardinier->setOutil($this->faker->randomElement(self::$outil));
-			$jardinier->setMission($this->faker->randomElement(self::$mission));
 			$fleurs = $this->getRandomReferences(Fleur::class, $this->faker->numberBetween(0, 5));
 			$fruits = $this->getRandomReferences(Fruit::class, $this->faker->numberBetween(0, 5));
 			$legumes = $this->getRandomReferences(Legume::class, $this->faker->numberBetween(0, 5));

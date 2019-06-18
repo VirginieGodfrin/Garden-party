@@ -6,7 +6,7 @@ use App\Entity\User;
 use App\Entity\Jardinier;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
-class SearchIndexer
+class JardinierIndexer
 {
     public function postPersist(LifecycleEventArgs $args)
     {
@@ -19,12 +19,18 @@ class SearchIndexer
         $users = $em->getRepository(User::class)->findAll();
 
         if($entity->getClassName() == 'Jardinier'){
-            foreach ($users as $user) {
-                if($user->getId() === $entity->getId() ){
-                    $entity->setOutil('Tondeuse');
-                    $entity->setMission('Tondre la pelouse');
-                    $em->flush();
-                }
+            $this->setMissionAndOutil($users, $entity, $em);
+        }
+        
+
+    }
+
+    private function setMissionAndOutil($users, $entity, $em){
+        foreach ($users as $user) {
+            if($user->getId() === $entity->getId() ){
+                $entity->setOutil('Tondeuse');
+                $entity->setMission('Tondre la pelouse');
+                $em->flush();
             }
         } 
     }

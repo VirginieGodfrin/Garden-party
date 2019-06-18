@@ -3,17 +3,20 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\RegisterType;
 use App\Entity\User;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use App\Event\UserRegisterEvent;
 
 /**
  * @Route("/user", name="user_")
  */
-class UserController extends AbstractController
+class UserController extends Controller
 {
     /**
      * @Route("/register", name="register")
@@ -25,10 +28,13 @@ class UserController extends AbstractController
     	$form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+
             $user = $form->getData();
             $type = $form['type']->getData();
+
             $type->setNom($user->getNom());
             $type->setPrenom($user->getPrenom());
+
             $em->persist($type);
             $em->flush();
 
@@ -39,8 +45,8 @@ class UserController extends AbstractController
             if($type->getClassName() === "Jardinier") {
                  return $this->redirectToRoute('jardinier_index');
             }
-        }
 
+        }
         return $this->render('user/register.html.twig', [
         	'form' => $form->createView(),
         ]);

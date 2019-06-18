@@ -37,14 +37,6 @@ class LegumeFixtures extends BaseFixture implements DependentFixtureInterface
 				'Minuscule'
 	];
 
-	private static $soupe = [
-			'De printemps',
-			'D\'été',
-			'D\'hivers',
-			'Saint germain',
-			'Magic',
-		];
-
     public function loadData(ObjectManager $manager)
     {
 		$this->createMany(Legume::class, 10, function(Legume $legume, $count)
@@ -52,7 +44,6 @@ class LegumeFixtures extends BaseFixture implements DependentFixtureInterface
 			$legume->setNom($this->faker->randomElement(self::$name));
 			$legume->setDescription($this->faker->randomElement(self::$description));
 			$legume->setTaille($this->faker->randomElement(self::$taille));
-			$legume->setSoupe($this->faker->randomElement(self::$soupe));
 			$legume->setCreatedAt($this->faker->dateTimeThisMonth());
 			$legume->setMangeur($this->getRandomReference(Mangeur::class));
 			

@@ -28,22 +28,12 @@ class FleurFixtures extends BaseFixture implements DependentFixtureInterface
 				'Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale.'
 	];
 
-	private static $bouquet = [
-				'Le bouquet du jardinner',
-				'Le bouquet de printemps',
-				'Le bouquet des mamans',
-				'Le bouquet de la marièe',
-				'Le bouquet des champs'
-	];
-
     public function loadData(ObjectManager $manager)
     {
 		$this->createMany(Fleur::class, 10, function(Fleur $fleur, $count)
 		{
 			$fleur->setNom($this->faker->randomElement(self::$name));
 			$fleur->setDescription($this->faker->randomElement(self::$description));
-			$fleur->setBouquet($this->faker->randomElement(self::$bouquet));
-			$fleur->setCouleur($this->faker->colorName());
 			$fleur->setCreatedAt($this->faker->dateTimeThisMonth());
 			$fleur->setMangeur($this->getRandomReference(Mangeur::class));
     	});

@@ -20,11 +20,6 @@ class FleurType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            // ->add('slug')
-            // ->add('createdAt')
-            // ->add('updatedAt')
-            ->add('bouquet')
-            ->add('couleur')
             ->add('mangeur', EntityType::class, [
                 'class' => Mangeur::class,
                 'choice_label' => 'fullName',

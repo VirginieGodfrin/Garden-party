@@ -23,13 +23,11 @@ class Fleur extends Vegetal
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank(message="Oups tu as ounlié le bouquet!")
      */
     private $bouquet;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Oups tu as ounlié la couleur!")
      */
     private $couleur;
 
