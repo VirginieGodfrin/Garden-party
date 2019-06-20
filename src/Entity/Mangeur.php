@@ -42,7 +42,7 @@ class Mangeur extends User
 
     public function getId(): ?int
     {
-        return $this->id;
+        return parent::getId();
     }
 
     public function getAdresse(): ?string

@@ -7,6 +7,9 @@
 		<div class="container">
 			<h1 class="display-3">Les mangeurs !</h1>
 		</div>
+		{% if isMac %}
+    		<h3>We love eating Mac's...RAWR!</h3>
+		{% endif %}
 	</div>
 
 	<div class="container">
@@ -29,6 +32,8 @@
 						{% endfor %}
 						</ul>
 					</p>
+					<p>{{mangeur.id}}</p>
+					<p><a class="btn btn-secondary" href="{{ path('mangeur_show', { id : mangeur.id }) }}" role="button">show</a></p>
 				</div>
 			{% endfor %}
 		</div>
