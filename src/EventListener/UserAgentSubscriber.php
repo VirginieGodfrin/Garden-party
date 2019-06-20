@@ -19,6 +19,10 @@ class UserAgentSubscriber implements EventSubscriberInterface
     // A chaque fois q'un utilise GetResponseEvent on fait appel à l'objet GetResponseEvent créer dans le HTTPKERNEL
 	public function onKernelRequest(GetResponseEvent $event)
     {
+        // this subscriber work only on master request !
+        if (!$event->isMasterRequest()) {
+            return;
+        }
     	
     	$request = $event->getRequest();
     	$userAgent = $request->headers->get('user-agent');

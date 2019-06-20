@@ -10,8 +10,14 @@
 		{% if isMac %}
     		<h3>We love eating Mac's...RAWR!</h3>
 		{% endif %}
+		
+		{# recupération d'un attribut de reqête dans une subRequest #}
+		{{ render(controller( 'App\\Controller\\MangeurController::_latestTweetsAction', 
+			{
+   				'userOnMac': app.request.attributes.get('isMac')
+			}
+		)) }}
 
-		{{ render(controller( 'App\\Controller\\MangeurController::_latestTweetsAction' )) }}
 	</div>
 
 	<div class="container">
