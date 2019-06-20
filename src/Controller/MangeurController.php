@@ -40,4 +40,18 @@ class MangeurController extends AbstractController
         dump($mangeur);
         return $this->render('mangeur/show.html.twig');
     }
+
+    public function _latestTweetsAction($isMac)
+    {
+        $tweets = [
+            'Aujourd\'hui on mange des pâtes',
+            'Bonjour tout le monde... ',
+            'Concert à la plage...'
+        ];
+
+        return $this->render('mangeur/_latestTweets.html.twig', [
+            'tweets' => $tweets,
+            'isMac' => $isMac
+        ]);
+    }
 }

@@ -26,6 +26,9 @@ class UserAgentSubscriber implements EventSubscriberInterface
         // $response = new Response('Come back later');
         // $event->setResponse($response);
         $isMac = stripos($userAgent, 'Mac') !== false;
+        if ($request->query->get('notMac')) {
+            $isMac = false;
+        }
         $request->attributes->set('isMac', $isMac);
         
     }

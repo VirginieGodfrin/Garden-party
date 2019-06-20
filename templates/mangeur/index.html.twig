@@ -10,6 +10,8 @@
 		{% if isMac %}
     		<h3>We love eating Mac's...RAWR!</h3>
 		{% endif %}
+
+		{{ render(controller( 'App\\Controller\\MangeurController::_latestTweetsAction' )) }}
 	</div>
 
 	<div class="container">
