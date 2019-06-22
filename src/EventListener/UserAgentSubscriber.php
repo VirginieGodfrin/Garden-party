@@ -34,6 +34,12 @@ class UserAgentSubscriber implements EventSubscriberInterface
             $isMac = false;
         }
         $request->attributes->set('isMac', $isMac);
+
+        // recupération de la locale dans un EventSubscriber
+        $locale = $request->getLocale();
+        dump($locale);
+        // some logic to determine the $locale
+        // $request->setLocale($locale);
         
     }
     public static function getSubscribedEvents()
