@@ -2,6 +2,12 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
+# app_home_page:
+#     path: /
+#     controller: App\Controller\HomePageController::indexAction
+
 app_home_page:
-    path: /
+    path:       /{_locale}/
     controller: App\Controller\HomePageController::indexAction
+    requirements:
+        _locale: fr|en
