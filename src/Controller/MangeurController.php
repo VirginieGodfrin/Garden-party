@@ -13,7 +13,10 @@ use App\Repository\MangeurRepository;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
- * @Route("/mangeur", name="mangeur_")
+ * @Route("/{_locale}/mangeur", name="mangeur_", 
+ *     requirements={
+ *         "_locale"="%app.locales%"
+ *     })
  */
 class MangeurController extends AbstractController
 {

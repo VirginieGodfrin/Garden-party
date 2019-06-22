@@ -28,7 +28,7 @@ class LegumeListener
     }
 
     /** @ORM\PreUpdate */
-    public function preUpdateValideName(Legume $legume, PreUpdateEventArgs $args) {
+    public function PreUpdateValideName(Legume $legume, PreUpdateEventArgs $args) {
         $changeField = null;
         $field = '';
 

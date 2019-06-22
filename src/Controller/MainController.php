@@ -5,8 +5,12 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
-class HomePageController
+/**
+ * @Route("/")
+ */
+class MainController
 {
     public function indexAction(TranslatorInterface $translator, Request $request)
     {
