@@ -5,10 +5,12 @@
 {% block body %}
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">Les mangeurs !</h1>
+			<h1 class="display-3">
+				{{ 'pageTitle'|trans({},'mangeurIndex')|title }}
+			</h1>
 		</div>
 		{% if isMac %}
-    		<h3>We love eating Mac's...RAWR!</h3>
+    		<h2>{{ 'paragraph0'|trans({},'mangeurIndex')|capitalize  }}</h2>
 		{% endif %}
 		
 		{# recupération d'un attribut de reqête dans une subRequest #}
@@ -25,23 +27,22 @@
 			{% for mangeur in mangeurs %}
 				{# {{ dump(mangeur.vegetals)}} #}
 				<div class="col-md-4">
-					<h3>{{ mangeur.nom }}</h3>
+					<h3>{{ 'label.nom'|trans({},'mangeurIndex') }}: {{ mangeur.nom }}</h3>
 					<p>
 						<ul>
-							<li>{{ mangeur.email }}</li>
-							<li>{{ mangeur.adresse }}</li>
-							<li>{{ mangeur.description }}</li>
+							<li>{{ 'label.email'|trans({},'mangeurIndex') }}: {{ mangeur.email }}</li>
+							<li>{{ 'label.adresse'|trans({},'mangeurIndex') }}: {{ mangeur.adresse }}</li>
+							<li>{{ 'label.description'|trans({},'mangeurIndex') }}: {{ mangeur.description }}</li>
 						</ul>
 					</p>
 					<p>
-						<ul>
+						<ul> {{ 'vegetaux'|trans({},'mangeurIndex') }}:
 						{% for vegetal in mangeur.vegetals %}
 							<li>{{vegetal.className}}: {{ vegetal.nom }}</li>
 						{% endfor %}
 						</ul>
 					</p>
-					<p>{{mangeur.id}}</p>
-					<p><a class="btn btn-secondary" href="{{ path('mangeur_show', { id : mangeur.id }) }}" role="button">show</a></p>
+					<p><a class="btn btn-secondary" href="{{ path('mangeur_show', { id : mangeur.id }) }}" role="button">{{ 'show'|trans({},'mangeurIndex')|upper  }}  voir</a></p>
 				</div>
 			{% endfor %}
 		</div>
@@ -55,7 +56,7 @@
 			{% for mangeur in mangeursLegumes %}
 				{# {{ dump(mangeur.vegetals)}} #}
 				<div class="col-md-4">
-					<h4>{{ mangeur.fullName }}</h4>
+					<h4>Nom: {{ mangeur.fullName }}</h4>
 					<p>
 						{{ mangeur.prenom }} mange
 						{% for vegetal in mangeur.vegetals %}

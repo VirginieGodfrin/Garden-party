@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="pageTitle">
+                <source>pageTitle</source>
+                <target>les mangeurs</target>
+            </trans-unit>
+            <trans-unit id="paragraph0">
+                <source>paragraph0</source>
+                <target>on adore manger des mac</target>
+            </trans-unit>
+            <trans-unit id="label.nom">
+                <source>label.nom</source>
+                <target>nom</target>
+            </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>email</target>
+            </trans-unit>
+            <trans-unit id="label.adresse">
+                <source>label.adresse</source>
+                <target>adresse</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>description</target>
+            </trans-unit>
+            <trans-unit id="label.vegetaux">
+                <source>label.vegetaux</source>
+                <target>vegetaux</target>
+            </trans-unit>
+            <trans-unit id="show">
+                <source>show</source>
+                <target>voir</target>
+            </trans-unit> 
+        </body>
+    </file>
+</xliff>

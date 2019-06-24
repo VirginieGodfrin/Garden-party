@@ -14,9 +14,10 @@ class MainController
 {
     public function indexAction(TranslatorInterface $translator, Request $request)
     {
-    	$translated = $translator->trans('Symfony c\'est super' );
+    	$translated = $translator->trans('Symfony c\'est super',  [], 'homePage' );
     	$locale = $request->getLocale();
     	// dump($locale);
+    	
 		return new Response(
             '<html><body><h1>'. $translated .'</h1></body></html>'
         );
