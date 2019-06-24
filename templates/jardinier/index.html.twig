@@ -5,12 +5,14 @@
 {% block body %}
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">Les jardiniers!</h1>
+			<h1 class="display-3">
+				{{ 'pageTitle'|trans({},'jardinierIndex')|title }}
+			</h1>
 		</div>
 	</div>
 
 	<div class="container">
-		<h2>les jardiniers</h2>
+		<h2>{{ 'pageTitle'|trans({},'jardinierIndex')|title }}</h2>
 	    <div class="row">
 	     {% for jardinier in jardiniers %}
 			<div class="col-md-4">
@@ -40,19 +42,19 @@
     <div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				<h3>Les Jardiniers</h3>
+				<h3>{{ 'pageTitle'|trans({},'jardinierIndex')|title }}</h3>
 				{% for jardinier in jardiniers %}
 					<h4>{{ jardinier.fullName }}</h4>
 				{% endfor %}
 	      	</div>
 			<div class="col-md-4">
-				<h3>Les JardisFleurs</h3>
+				<h3>{{ 'title1'|trans({},'jardinierIndex')|title }}</h3>
 				{% for jardiFleur in jardiniersFleur %}
 					<h4>{{ jardiFleur.fullName }}</h4>
 				{% endfor %}
 			</div>
 	      	<div class="col-md-4">
-				<h3>Les JardisArbres</h3>
+				<h3>{{ 'title2'|trans({},'jardinierIndex')|title }}</h3>
 				{% for jardiArbre in jardiniersArbre %}
 					<h4>{{ jardiArbre.fullName }}</h4>
 				{% endfor %}
