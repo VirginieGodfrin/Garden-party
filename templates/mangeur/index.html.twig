@@ -27,16 +27,16 @@
 			{% for mangeur in mangeurs %}
 				{# {{ dump(mangeur.vegetals)}} #}
 				<div class="col-md-4">
-					<h3>{{ 'label.nom'|trans({},'mangeurIndex') }}: {{ mangeur.nom }}</h3>
+					<h3>{{ 'label.nom'|trans({},'mangeurIndex')|upper  }}: {{ mangeur.nom }}</h3>
 					<p>
 						<ul>
-							<li>{{ 'label.email'|trans({},'mangeurIndex') }}: {{ mangeur.email }}</li>
-							<li>{{ 'label.adresse'|trans({},'mangeurIndex') }}: {{ mangeur.adresse }}</li>
-							<li>{{ 'label.description'|trans({},'mangeurIndex') }}: {{ mangeur.description }}</li>
+							<li>{{ 'label.email'|trans({},'mangeurIndex')|upper  }}: {{ mangeur.email }}</li>
+							<li>{{ 'label.adresse'|trans({},'mangeurIndex')|upper  }}: {{ mangeur.adresse }}</li>
+							<li>{{ 'label.description'|trans({},'mangeurIndex')|upper  }}: {{ mangeur.description }}</li>
 						</ul>
 					</p>
 					<p>
-						<ul> {{ 'vegetaux'|trans({},'mangeurIndex') }}:
+						<ul> {{ 'vegetaux'|trans({},'mangeurIndex')|upper  }}:
 						{% for vegetal in mangeur.vegetals %}
 							<li>{{vegetal.className}}: {{ vegetal.nom }}</li>
 						{% endfor %}
