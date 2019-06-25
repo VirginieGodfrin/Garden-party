@@ -14,7 +14,10 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 use App\Event\UserRegisterEvent;
 
 /**
- * @Route("/user", name="user_")
+ * @Route("/{_locale}/user", name="user_", 
+ *     requirements={
+ *         "_locale"="%app.locales%"
+ *     })
  */
 class UserController extends Controller
 {

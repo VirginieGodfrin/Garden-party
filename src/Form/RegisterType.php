@@ -16,14 +16,23 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
+            ->add('nom', null ,[
+                'label' => 'nom', 
+                'required'=> true,
+                'translation_domain' => 'registerForm'
+            ])
+            ->add('prenom', null, [
+                'label' => 'prénom', 
+                'required'=> true,
+                'translation_domain' => 'registerForm'
+            ])
             ->add('type', ChoiceType::class, [
                     'choices' => [
                         new Jardinier(Jardinier::class),
                         new Mangeur(Mangeur::class),
                     ],
                     'choice_label' => 'ClassName',
+                    'translation_domain' => 'registerForm',
                     'mapped' => false
             ]);
     }
