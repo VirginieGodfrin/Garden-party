@@ -25,6 +25,7 @@ use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
  *     "arbre" = "Arbre"
  * })
  * @ORM\HasLifecycleCallbacks()
+ * @Gedmo\TranslationEntity(class="Entity\VegetalTranslation")
  */
 class Vegetal 
 {
@@ -41,18 +42,21 @@ class Vegetal
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="vegetal.nom.not_blank")
      * @myAssert\ContainsCarotte
+     * @Gedmo\Translatable
      */
     private $nom;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="vegetal.description.not_blank")
+     * @Gedmo\Translatable
      */
     private $description;
 
     /**
      * @Gedmo\Slug(fields={"nom"})
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Translatable
      */
     private $slug;
 
@@ -71,10 +75,19 @@ class Vegetal
      */
     private $isUpdate = false;
 
+    /**
+     * @ORM\OneToMany(
+     *   targetEntity="VegetalTranslation",
+     *   mappedBy="object",
+     *   cascade={"persist", "remove"}
+     * )
+     */
+    private $translations;
 
     public function __construct()
     {
         $this->jardiniers = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -168,5 +181,15 @@ class Vegetal
         return $this;
     }
 
-    
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+    public function addTranslation(VegetalTranslation $t)
+    {
+        if (!$this->translations->contains($t)) {
+            $this->translations[] = $t;
+            $t->setObject($this);
+        }
+    }
 }
