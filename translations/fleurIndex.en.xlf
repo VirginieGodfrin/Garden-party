@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="pageTitle">
+                <source>pageTitle</source>
+                <target>Les jardiniers</target>
+            </trans-unit>
+            <trans-unit id="title1">
+                <source>title1</source>
+                <target>Les jardi-fleurs</target>
+            </trans-unit>
+            <trans-unit id="title2">
+                <source>title2</source>
+                <target>Les jardi-arbres</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

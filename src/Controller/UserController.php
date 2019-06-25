@@ -22,7 +22,10 @@ use App\Event\UserRegisterEvent;
 class UserController extends Controller
 {
     /**
-     * @Route("/register", name="register")
+     * @Route({
+     *     "en": "/registration",
+     *     "fr": "/enregistrement"
+     * }, name="register")
      */
     public function registerAction(Request $request, EntityManagerInterface $em)
     {

@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\JardinierRepository;
 
 /**
- * @Route("//{_locale}/jardinier", name="jardinier_")
+ * @Route("/{_locale}/jardinier", name="jardinier_")
  */
 class JardinierController extends AbstractController
 {
