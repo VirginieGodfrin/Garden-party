@@ -37,7 +37,7 @@ class UserAgentSubscriber implements EventSubscriberInterface
 
         // recupération de la locale dans un EventSubscriber
         $locale = $request->getLocale();
-        dump($locale);
+        // dump($locale);
         // some logic to determine the $locale
         // $request->setLocale($locale);
         

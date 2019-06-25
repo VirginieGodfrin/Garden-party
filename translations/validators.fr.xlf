@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="vegetal.nom.not_blank">
+                <source>vegetal.nom.not_blank</source>
+                <target>Entrez un nom, merci !</target>
+            </trans-unit>
+             <trans-unit id="vegetal.description.not_blank">
+                <source>vegetal.description.not_blank</source>
+                <target>Entrez une description, merci !</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

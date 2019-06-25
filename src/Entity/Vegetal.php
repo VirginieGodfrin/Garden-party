@@ -37,15 +37,16 @@ class Vegetal
     private $id;
 
     /**
+     * 
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Oups tu as oublié la description!")
+     * @Assert\NotBlank(message="vegetal.nom.not_blank")
      * @myAssert\ContainsCarotte
      */
     private $nom;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank(message="Oups tu as oublié la description!")
+     * @Assert\NotBlank(message="vegetal.description.not_blank")
      */
     private $description;
 

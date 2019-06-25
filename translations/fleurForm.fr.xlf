@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="nom">
+                <source>nom</source>
+                <target>nom</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>description</source>
+                <target>description</target>
+            </trans-unit>
+            <trans-unit id="mangeur">
+                <source>mangeur</source>
+                <target>mangeur</target>
+            </trans-unit>
+            <trans-unit id="jardiniers">
+                <source>jardiniers</source>
+                <target>jardiniers</target>
+            </trans-unit>
+            <trans-unit id="legumes">
+                <source>legumes</source>
+                <target>légumes</target>
+            </trans-unit>
+            <trans-unit id="Save">
+                <source>Save</source>
+                <target>sauver</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
