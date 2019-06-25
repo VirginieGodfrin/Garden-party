@@ -9,8 +9,12 @@ use App\Repository\FleurRepository;
 use Symfony\Component\HttpFoundation\Request;
 Use App\Form\FleurType;
 use Doctrine\ORM\EntityManagerInterface;
+
 /**
- * @Route("/fleur", name="fleur_")
+ * @Route("/{_locale}/fleur", name="fleur_", 
+ *     requirements={
+ *         "_locale"="%app.locales%"
+ *     })
  */
 class FleurController extends AbstractController
 {
@@ -29,7 +33,10 @@ class FleurController extends AbstractController
     }
 
     /**
-     * @Route("/new/", name="new")
+     * @Route({
+     *     "en": "/new",
+     *     "fr": "/nouveau"
+     * }, name="new")
      */
     public function newAction(Request $request, EntityManagerInterface $em)
     {
@@ -52,9 +59,12 @@ class FleurController extends AbstractController
             'form' => $form->createView(),
         ]); 
     }
-
+    
     /**
-     * @Route("/{slug}/edit/", name="edit")
+     * @Route({
+     *     "en": "/{slug}/edit",
+     *     "fr": "/{slug}/editer"
+     * }, name="edit")
      */
     public function editAction(Fleur $fleur, Request $request, EntityManagerInterface $em)
     {

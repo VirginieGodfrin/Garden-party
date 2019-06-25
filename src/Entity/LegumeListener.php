@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class LegumeListener
 {
     /** @ORM\PrePersist */
-    public function prePersistRenameSoupe(Legume $legume, LifecycleEventArgs $args) { 
+    public function PrePersistRenameSoupe(Legume $legume, LifecycleEventArgs $args) { 
         $em = $args->getObjectManager();
         $entity = $args->getObject();
 

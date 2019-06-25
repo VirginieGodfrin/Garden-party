@@ -5,23 +5,44 @@
 {% block body %}
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">Espace fleurs! {{ fleurs|length }}</h1>
+			<h1>
+				{{ 'pageTitle'|trans({},'fleurIndex')|title  }} {{ fleurs|length }}
+			</h1>
 		</div>
+
+		<a href="{{ path('fleur_new')}}" class="btn btn-primary" role="button">
+			{{ 'new'|trans({},'fleurIndex')|upper }}
+		</a>
 	</div>
 	<div class="container">
 		<div class="row">
 			{% for fleur in fleurs %}
 			<div class="col-md-4" style="background-color:{{ fleur.couleur }}">
-				<p><small>{{ fleur.createdAt|date('d-m-Y') }} {{ fleur.createdAt|date('H:i:s') }}</small></p>
-				{# {{ dump(fleur.isUpdate)}} #}
-				{% if fleur.isUpdate %}
-					<p><small>{{ fleur.updatedAt|date('d-m-Y') }} {{ fleur.updatedAt|date('H:i:s') }}</small></p>
-				{% endif %}
-				<h3>{{ fleur.nom }}</h3>
-				<p><small class="text-muted"> {{ fleur.bouquet }}</small></p>
-				<p>{{ fleur.description }}</p>
-				<p>Mangée par : {{ fleur.mangeur.fullName }}</p>
-				<p>Cultivée par :
+				<p>
+					<small>
+						{{ 'inlineDate'|trans({},'fleurIndex')|capitalize}} :
+						{{ fleur.createdAt|date('d-m-Y') }} 
+					</small>
+				</p>
+				<h3>
+					{{ 'nom'|trans({},'fleurIndex')|capitalize}} :
+					{{ fleur.nom }}
+				</h3>
+				<p>
+					<small class="text-muted">
+						{{ 'bouquet'|trans({},'fleurIndex')|capitalize}} :
+						{{ fleur.bouquet }}
+					</small>
+				</p>
+				<p>
+					{{ 'description'|trans({},'fleurIndex')|capitalize}} :
+					{{ fleur.description }}
+				</p>
+				<p>
+					{{ 'mangeur'|trans({},'fleurIndex')|capitalize}} :
+					{{ fleur.mangeur.fullName }}
+				</p>
+				<p>{{ 'jadinier'|trans({},'fleurIndex')|capitalize}} :
 					<ul>
 						{# For "fonctionne" comme if #}
 						{% for jardinier in fleur.jardiniers %}
@@ -31,7 +52,7 @@
 						{% endfor %}
 					</ul>
 				</p>
-				<p>Légumes :
+				<p>{{ 'légumes'|trans({},'fleurIndex')|capitalize}} :
 					<ul>
 						{# For "fonctionne" comme if #}
 						{% for legume in fleur.legumes %}
@@ -41,7 +62,12 @@
 						{% endfor %}
 					</ul>
 				</p>
-				<p><a class="btn btn-secondary" href="{{ path('fleur_edit', { slug : fleur.slug }) }}" role="button">Edit</a></p>
+				<p>
+					<a class="btn btn-secondary" 
+						href="{{ path('fleur_edit', { slug : fleur.slug }) }}" role="button"
+					>
+					{{ 'edit'|trans({},'fleurIndex')|upper}}
+					</a>
 				</p>
 			</div>
 			{% endfor %}

@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" datatype="plaintext" original="file.ext">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="pageTitle">
                 <source>pageTitle</source>
-                <target>flower space</target>
+                <target>Espace Fleur</target>
             </trans-unit>
             <trans-unit id="new">
                 <source>new</source>
-                <target>new</target>
+                <target>nouveau</target>
             </trans-unit>
             <trans-unit id="edit">
                 <source>edit</source>
-                <target>edit</target>
+                <target>editer</target>
             </trans-unit>
             <trans-unit id="label1">
                 <source>inlineDate</source>
-                <target>inline date</target>
+                <target>date de mise en ligne</target>
             </trans-unit>
             <trans-unit id="label2">
                 <source>nom</source>
-                <target>name</target>
+                <target>nom</target>
             </trans-unit>
             <trans-unit id="label3">
                 <source>bouquet</source>
@@ -32,15 +32,15 @@
             </trans-unit>
             <trans-unit id="label5">
                 <source>mangeur</source>
-                <target>eaten by</target>
+                <target>mangé par</target>
             </trans-unit>
             <trans-unit id="label6">
                 <source>jadinier</source>
-                <target>grown by</target>
+                <target>cultivé par</target>
             </trans-unit>
             <trans-unit id="label7">
                 <source>légumes</source>
-                <target>vegetables</target>
+                <target>légumes</target>
             </trans-unit>
         </body>
     </file>

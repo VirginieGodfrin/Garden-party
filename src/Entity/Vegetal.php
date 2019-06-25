@@ -158,7 +158,7 @@ class Vegetal
     }
 
     /**
-     * @ORM\preUpdate
+     * @ORM\PreUpdate
      */
     public function setIsUpdate(): self
     {
