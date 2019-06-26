@@ -45,3 +45,11 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
+    App\EventListener\LocaleSubscriber:
+        arguments: ['%kernel.default_locale%']
+        tags: [kernel.event_subscriber]
+
+    App\EventListener\TranslateListener:
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+

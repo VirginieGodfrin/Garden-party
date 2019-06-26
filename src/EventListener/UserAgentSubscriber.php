@@ -12,9 +12,11 @@ class UserAgentSubscriber implements EventSubscriberInterface
 {
 	private $logger;
 
+
 	public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;
+
     }
     // A chaque fois q'un utilise GetResponseEvent on fait appel à l'objet GetResponseEvent créer dans le HTTPKERNEL
 	public function onKernelRequest(GetResponseEvent $event)
@@ -36,8 +38,7 @@ class UserAgentSubscriber implements EventSubscriberInterface
         $request->attributes->set('isMac', $isMac);
 
         // recupération de la locale dans un EventSubscriber
-        $locale = $request->getLocale();
-        // dump($locale);
+        // $locale = $request->getLocale();
         // some logic to determine the $locale
         // $request->setLocale($locale);
         
@@ -50,5 +51,4 @@ class UserAgentSubscriber implements EventSubscriberInterface
             'kernel.request' => 'onKernelRequest'
         );
     }
-
 }

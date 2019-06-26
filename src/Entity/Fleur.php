@@ -12,7 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FleurRepository")
- * @Gedmo\TranslationEntity(class="Entity\FleurTranslation")
  */
 class Fleur extends Vegetal
 {
@@ -40,20 +39,10 @@ class Fleur extends Vegetal
      */
     private $legumes;
 
-    /**
-     * @ORM\OneToMany(
-     *   targetEntity="FleurTranslation",
-     *   mappedBy="object",
-     *   cascade={"persist", "remove"}
-     * )
-     */
-    private $translations;
-
     public function __construct()
     {
         parent::__construct();
         $this->legumes = new ArrayCollection();
-        $this->translations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,17 +114,5 @@ class Fleur extends Vegetal
         $this->legumes->removeElement($legume);
         $legume->removeFleur($this);
         return $this;
-    }
-
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-    public function addTranslation(FleurTranslation $t)
-    {
-        if (!$this->translations->contains($t)) {
-            $this->translations[] = $t;
-            $t->setObject($this);
-        }
     }
 }

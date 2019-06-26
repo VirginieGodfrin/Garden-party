@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Translatable\Translatable;
 use App\Entity\Mangeur;
 use App\Entity\Jardinier;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -25,11 +26,12 @@ use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
  *     "arbre" = "Arbre"
  * })
  * @ORM\HasLifecycleCallbacks()
- * @Gedmo\TranslationEntity(class="Entity\VegetalTranslation")
+ * 
  */
-class Vegetal 
+class Vegetal implements Translatable
 {
     use TimestampableEntity;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -76,18 +78,13 @@ class Vegetal
     private $isUpdate = false;
 
     /**
-     * @ORM\OneToMany(
-     *   targetEntity="VegetalTranslation",
-     *   mappedBy="object",
-     *   cascade={"persist", "remove"}
-     * )
+     * @Gedmo\Locale
      */
-    private $translations;
+    private $locale;
 
     public function __construct()
     {
         $this->jardiniers = new ArrayCollection();
-        $this->translations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -181,15 +178,9 @@ class Vegetal
         return $this;
     }
 
-    public function getTranslations()
+    public function setTranslatableLocale($locale)
     {
-        return $this->translations;
+        $this->locale = $locale;
     }
-    public function addTranslation(VegetalTranslation $t)
-    {
-        if (!$this->translations->contains($t)) {
-            $this->translations[] = $t;
-            $t->setObject($this);
-        }
-    }
+
 }

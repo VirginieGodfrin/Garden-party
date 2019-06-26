@@ -49,7 +49,7 @@ class FleurController extends AbstractController
             $fleur = $form->getData();
 
             $em->persist($fleur);
-            
+
             $em->flush();
 
             return $this->redirectToRoute('fleur_index');
