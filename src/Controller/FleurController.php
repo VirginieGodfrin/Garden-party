@@ -21,9 +21,11 @@ class FleurController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function indexAction(FleurRepository $fleurRepo)
+    public function indexAction(FleurRepository $fleurRepo, EntityManagerInterface $em)
     {
-    	// $fleurs = $fleurRepo->findAll();
+    	$fleurs1 = $fleurRepo->findAll();
+        // dump($fleurs1);
+
         $fleurs = $fleurRepo->giveMeAllFlowers(); 
         // $fleurs = $fleurRepo->giveMeAllFleurSQL();
         

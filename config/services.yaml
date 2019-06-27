@@ -49,7 +49,7 @@ services:
         arguments: ['%kernel.default_locale%']
         tags: [kernel.event_subscriber]
 
-    App\EventListener\TranslateListener:
+    App\EventListener\TranslateSubscriber:
         tags:
-            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_subscriber, connection: default }
 

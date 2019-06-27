@@ -15,6 +15,24 @@ class TranslateListener
 	    $this->session = $session;
 	}
 
+	public function prePersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getObject();
+
+        if (!$entity instanceof Fleur) {
+            return;
+        }
+
+        $em= $args->getObjectManager();
+
+        $fleur = $em->getRepository(Fleur::class)->findOneById($entity->getId());
+
+		$fleur->setNom('Florwer name');
+		$fleur->setDescription('Flower description');
+		$fleur->setTranslatableLocale('en');
+
+    }
+
     public function preUpdate(LifecycleEventArgs $args)
     {
         $entity = $args->getObject();
@@ -26,18 +44,10 @@ class TranslateListener
         $em= $args->getObjectManager();
 
         $fleur = $em->getRepository(Fleur::class)->findOneById($entity->getId());
-        // dump($fleur);
+
 		$fleur->setNom('Florwer name');
 		$fleur->setDescription('Flower description');
 		$fleur->setTranslatableLocale('en');
 
-		$repository = $em->getRepository('Gedmo\Translatable\Entity\Translation');
-		$translations = $repository->findTranslations($fleur);
-
-		dump($fleur);
-		dump($repository);
-		dump($translations); die;
-		// $em->persist($fleur);
-		// $em->flush();
     }
 }

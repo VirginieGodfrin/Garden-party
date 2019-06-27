@@ -77,11 +77,6 @@ class Vegetal implements Translatable
      */
     private $isUpdate = false;
 
-    /**
-     * @Gedmo\Locale
-     */
-    private $locale;
-
     public function __construct()
     {
         $this->jardiniers = new ArrayCollection();
@@ -176,6 +171,21 @@ class Vegetal implements Translatable
         $this->isUpdate = true;
 
         return $this;
+    }
+
+    public function getLocale($locale)
+    {
+        return $this->locale;
+    }
+
+    public function getTranslatableLocale($locale)
+    {
+        return $this->translatableLocale;
+    }
+
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 
     public function setTranslatableLocale($locale)

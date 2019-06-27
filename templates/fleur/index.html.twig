@@ -13,6 +13,9 @@
 		<a href="{{ path('fleur_new')}}" class="btn btn-primary" role="button">
 			{{ 'new'|trans({},'fleurIndex')|upper }}
 		</a>
+
+		{{ dump(fleurs)}}
+		
 	</div>
 	<div class="container">
 		<div class="row">
@@ -63,9 +66,9 @@
 					</ul>
 				</p>
 				<p>
-					<a class="btn btn-secondary" 
+					{# <a class="btn btn-secondary" 
 						href="{{ path('fleur_edit', { slug : fleur.slug }) }}" role="button"
-					>
+					> #}
 					{{ 'edit'|trans({},'fleurIndex')|upper}}
 					</a>
 				</p>
