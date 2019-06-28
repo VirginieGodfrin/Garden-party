@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190613123814 extends AbstractMigration
+final class Version20190628130744 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -32,6 +32,7 @@ final class Version20190613123814 extends AbstractMigration
         $this->addSql('CREATE TABLE legume (id INT NOT NULL, taille VARCHAR(255) NOT NULL, soupe VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE legume_fleur (legume_id INT NOT NULL, fleur_id INT NOT NULL, INDEX IDX_5464763B25F18E37 (legume_id), INDEX IDX_5464763BE8DD5A7 (fleur_id), PRIMARY KEY(legume_id, fleur_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE pollinisateur (id INT AUTO_INCREMENT NOT NULL, fleur VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE ext_translations (id INT AUTO_INCREMENT NOT NULL, locale VARCHAR(8) NOT NULL, object_class VARCHAR(255) NOT NULL, field VARCHAR(32) NOT NULL, foreign_key VARCHAR(64) NOT NULL, content LONGTEXT DEFAULT NULL, INDEX translations_lookup_idx (locale, object_class, foreign_key), UNIQUE INDEX lookup_unique_idx (locale, object_class, field, foreign_key), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB ROW_FORMAT = DYNAMIC');
         $this->addSql('ALTER TABLE vegetal ADD CONSTRAINT FK_61DBFF336C637D0 FOREIGN KEY (mangeur_id) REFERENCES user (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE arbre ADD CONSTRAINT FK_C8C4501ABF396750 FOREIGN KEY (id) REFERENCES vegetal (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE fleur ADD CONSTRAINT FK_3FFA923BF396750 FOREIGN KEY (id) REFERENCES vegetal (id) ON DELETE CASCADE');
@@ -69,5 +70,6 @@ final class Version20190613123814 extends AbstractMigration
         $this->addSql('DROP TABLE legume');
         $this->addSql('DROP TABLE legume_fleur');
         $this->addSql('DROP TABLE pollinisateur');
+        $this->addSql('DROP TABLE ext_translations');
     }
 }
