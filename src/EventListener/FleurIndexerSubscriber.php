@@ -30,10 +30,10 @@ class FleurIndexerSubscriber implements EventSubscriber
     {
         $entity = $args->getObject();
 
-        // perhaps you only want to act on some "Product" entity
         if ($entity instanceof Fleur) {
             $em = $args->getObjectManager();
             $this->setColor($entity);
+
         }
     }
 
@@ -41,11 +41,10 @@ class FleurIndexerSubscriber implements EventSubscriber
     {
         $entity = $args->getObject();
 
-        // perhaps you only want to act on some "Product" entity
         if ($entity instanceof Fleur) {
             $em = $args->getObjectManager();
             $this->setBouquet($entity);
-            $em->flush();
+            dump($entity);
         }
     }
 
