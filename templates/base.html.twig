@@ -14,7 +14,7 @@
     <body>
     	<main role="main">
             <nav class="navbar navbar-light bg-light">
-                <form class="form-inline">
+                <div>
                     {% if (app.request.getLocale()) == 'en' %}
                         <a href="{{ path( app.request.get('_route'),
                                     app.request.get('_route_params')| merge({'_locale': 'fr'})
@@ -35,10 +35,14 @@
                         EN
                         </a>
                     {% endif %}
-                </form>
+                </div>
             </nav>
+            
 			{% block body %}
 			{% endblock %}
+
+            {% block form %}
+            {% endblock %}
 
 		</main>
         <footer class="footer">

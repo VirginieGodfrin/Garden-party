@@ -5,15 +5,24 @@
 {% block body %}
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">Les legumes !</h1>
-			<p>les legumes à la fleur escargots 
+			<div class="container">
+			<h1>
+				{{ 'pageTitle'|trans({},'legumeIndex')|title }}
+			</h1>
+		</div>
+			<p>{{ 'title1'|trans({},'legumeIndex')|upper }} 
 				<ul>
 					{% for legume in legumesEscargots %}
 						<li>{{ legume.nom }}</li>
+						{% else %}
+							No legumes à fleurs d'escargots
 					{% endfor %}
 				</ul>
 			</p>
 		</div>
+		<a href="{{ path('legume_new')}}" class="btn btn-primary" role="button">
+			{{ 'new'|trans({},'legumeIndex')|upper }}
+		</a>
 	</div>
 
 	<div class="container">
@@ -25,8 +34,8 @@
 				<p>
 					<ul>
 						<li>{{ legume.taille }}</li>
-						<li>{{ legume.soupe}}</li>
-						<li>Mangeur: {{ legume.mangeur.nom }}</li>
+						<li>{{ legume.soupe }}</li>
+						<li>{{ 'mangeur'|trans({},'legumeIndex')|capitalize }}: {{ legume.mangeur.nom }}</li>
 					</ul>
 				</p>
 				<p>
@@ -36,7 +45,10 @@
 						{% endfor %}
 					</ul>
 				</p>
-				<p><a class="btn btn-secondary" href="{{ path('legume_edit', { slug : legume.slug }) }}" role="button">Edit</a></p>
+				<p>
+					<a class="btn btn-secondary" href="{{ path('legume_edit', { slug : legume.slug }) }}" role="button">{{ 'edit'|trans({},'legumeIndex')|upper}}</a>
+				</p>
+
 			</div>
 			{% endfor %}
 		</div>

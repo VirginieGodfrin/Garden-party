@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="pageTitle">
+                <source>pageTitle</source>
+                <target>Espace Legumes</target>
+            </trans-unit>
+            <trans-unit id="title1">
+                <source>title1</source>
+                <target>Legumes à fleurs d'escargots</target>
+            </trans-unit>
+            <trans-unit id="mangeur">
+                <source>mangeur</source>
+                <target>Mangeur</target>
+            </trans-unit>
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>editer</target>
+            </trans-unit>
+            <trans-unit id="new">
+                <source>new</source>
+                <target>nouveau</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

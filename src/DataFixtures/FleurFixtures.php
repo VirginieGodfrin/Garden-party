@@ -32,6 +32,7 @@ class FleurFixtures extends BaseFixture implements DependentFixtureInterface
     {
 		$this->createMany(Fleur::class, 10, function(Fleur $fleur, $count)
 		{
+			$fleur->setTranslatableLocale('en');
 			$fleur->setNom($this->faker->randomElement(self::$name));
 			$fleur->setDescription($this->faker->randomElement(self::$description));
 			$fleur->setCreatedAt($this->faker->dateTimeThisMonth());

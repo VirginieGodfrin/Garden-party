@@ -31,7 +31,7 @@ services:
     legume_listener:
         class: src\Listener\legumeListener
         tags:
-            - { name: doctrine.orm.entity_listener }
+            - { name: doctrine.orm.entity_listener, lazy: true }
 
     App\EventListener\JardinierIndexer:
         tags:

@@ -10,8 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Legume;
 Use App\Form\LegumeType;
 
+
 /**
- * @Route("/legume", name="legume_")
+ * @Route("/%app.route_prefix%/legume", name="legume_")
  */
 class LegumeController extends AbstractController
 {
