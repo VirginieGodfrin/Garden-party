@@ -44,7 +44,6 @@ class FleurIndexerSubscriber implements EventSubscriber
         if ($entity instanceof Fleur) {
             $em = $args->getObjectManager();
             $this->setBouquet($entity);
-            dump($entity);
         }
     }
 
