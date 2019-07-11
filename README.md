@@ -96,3 +96,5 @@ Pour écouter les events doctrine, il existe deux types d'objets:
 
 Il ne faut pas oublier que ces objets servent à : "Enrégistrer ça lorsque qu'on enrégiste ceci".
 
+### Symfony Event
+
