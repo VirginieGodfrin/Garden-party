@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="pageTitle">
                 <source>pageTitle</source>
-                <target>flower space</target>
+                <target>flower space %name%</target>
             </trans-unit>
             <trans-unit id="new">
                 <source>new</source>
